@@ -8,7 +8,7 @@ public class GameHandler : MonoBehaviour
     {
         healthSystem = new HealthSystem(100);
         Debug.Log("Health = " + healthSystem.GetHp());
-        Transform hpBarTransform =  Instantiate(HpBar, new Vector3(0, 1), Quaternion.identity);
+        Transform hpBarTransform =  Instantiate(HpBar, new Vector3(0, 3), Quaternion.identity);
         hpBarTransform.parent = transform.Find("Player");
         HealthBar healthBar = hpBarTransform.GetComponent<HealthBar>(); 
         healthBar.Setup(healthSystem);
