@@ -1,17 +1,13 @@
 using UnityEngine;
-
+using Players;
 public class GameHandler : MonoBehaviour
 {
+    public Player playerController;
     public HealthSystem healthSystem;
-    public Transform HpBar;
     void Start()
     {
-        healthSystem = new HealthSystem(100);
+        healthSystem = playerController.healthSystem;
         Debug.Log("Health = " + healthSystem.GetHp());
-        Transform hpBarTransform =  Instantiate(HpBar, new Vector3(0, 3), Quaternion.identity);
-        hpBarTransform.parent = transform.Find("Player");
-        HealthBar healthBar = hpBarTransform.GetComponent<HealthBar>(); 
-        healthBar.Setup(healthSystem);
     }
     public void BtnDamage(int amount)
     {

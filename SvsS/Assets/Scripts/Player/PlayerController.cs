@@ -1,15 +1,26 @@
+﻿using Assets.Scripts.Effects;
+using Assets.Scripts.Interfaces;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Players
 {
-    [SerializeField] private float hp;
-    void Start()
+    class PlayerController : MonoBehaviour
     {
-        
-    }
-
-    void Update()
-    {
-        
+        public List<Player> players;
+        Player currentPlayer;
+        private void Start()
+        {
+          
+        }
+        private void ApplyEffects(IEffects effect)
+        {
+            effect = new AddDamage();
+            effect.DoMechanic(10, currentPlayer);
+        }
     }
 }
+/*
+ * у нас будет событие, которым мы подпишемся на выход карты. генератор событий будет на столе.
+ * получив данные карты, мы будем вызывать метод DoMechanic со значениями, которые внутри карты.
+ */
