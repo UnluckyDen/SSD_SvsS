@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using Card.Effects;
+using Card.Mechanics;
 using UnityEngine;
 
 namespace Card.Data
 {
-    [CreateAssetMenu(fileName = "EffectsData", menuName = "Effects Data", order = 0)]
-    public class EffectsData : ScriptableObject
+    [CreateAssetMenu(fileName = "MechanicsData", menuName = "Mechanic Data", order = 0)]
+    public class MechanicEffectsData : ScriptableObject
     {
         [System.Serializable]
         public struct EffectsSettings
@@ -14,9 +14,9 @@ namespace Card.Data
             public int healCount;
             public int manaCount;
             public int drawsCardCount;
-            
+            public CardData getTargetCard;
                 
-            public EffectsTemplate effect;
+            public MechanicsTemplate mechanic;
         }
 
         public List<EffectsSettings> effectsSettingsList;

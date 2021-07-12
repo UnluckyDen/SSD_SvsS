@@ -1,23 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Players;
+using UnityEngine;
 
-public class TurnController : MonoBehaviour
+namespace Manager
 {
-    public Animator turnManager;
-    public Player player;
-    public void Start()
+    public class TurnController : MonoBehaviour
     {
-        turnManager.SetTrigger("PlayerFirst");      
-    }
+        public Animator turnManager;
+        public Player player;
+        private static readonly int PlayerFirst = Animator.StringToHash("PlayerFirst");
 
-    public void Update()
-    {
-        //player does not contain playerHealthSystem attribute
-        /*if (player.playerHealthSystem.GetHp() == 0)
+        public void Start()
+        {
+            turnManager.SetTrigger(PlayerFirst);      
+        }
+
+        public void Update()
+        {
+            //player does not contain playerHealthSystem attribute
+            /*if (player.playerHealthSystem.GetHp() == 0)
         {
             turnManager.SetTrigger("PlayerToEnd");
         }*/
+        }
     }
 }

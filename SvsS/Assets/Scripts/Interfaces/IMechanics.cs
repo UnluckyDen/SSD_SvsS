@@ -2,9 +2,9 @@
 using UnityEngine;
 using Players;
 
-namespace Assets.Scripts.Interfaces
+namespace Interfaces
 {
-    interface IEffects
+    interface IMechanic
     {
        void DoMechanic(int value, Player player);
     }
