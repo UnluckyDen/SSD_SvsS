@@ -9,7 +9,7 @@ namespace Card.Data
     {
             public new string name;
             public string description;
-            public string manaCost;
+            public int manaCost;
             public Sprite sprite;
             public GameObject cardPrefab;
             
