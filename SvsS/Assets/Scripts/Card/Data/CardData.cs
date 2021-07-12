@@ -13,6 +13,6 @@ namespace Card.Data
             public Sprite sprite;
             public GameObject cardPrefab;
             
-            public List<EffectsData> cardEffect;
+            public List<MechanicEffectsData> cardEffect;
     }
 }

@@ -1,22 +1,25 @@
-﻿using Assets.Scripts.Effects;
-using Assets.Scripts.Interfaces;
+﻿using System;
+using Interfaces;
 using System.Collections.Generic;
 using UnityEngine;
+using Card.Mechanics;
+using JetBrains.Annotations;
 
 namespace Players
 {
     class PlayerController : MonoBehaviour
     {
         public List<Player> players;
-        Player currentPlayer;
+        Player _currentPlayer;
         private void Start()
         {
           
         }
-        private void ApplyEffects(IEffects effect)
+        private void ApplyEffects([NotNull] IMechanic mechanic)
         {
-            effect = new AddDamage();
-            effect.DoMechanic(10, currentPlayer);
+            if (mechanic == null) throw new ArgumentNullException(nameof(mechanic));
+            mechanic = new AddDamage();
+            mechanic.DoMechanic(10, _currentPlayer);
         }
     }
 }
