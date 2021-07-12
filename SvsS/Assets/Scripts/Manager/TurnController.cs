@@ -20,4 +20,15 @@ public class TurnController : MonoBehaviour
             turnManager.SetTrigger("PlayerToEnd");
         }*/
     }
+    public void EndTurn()
+    {
+        if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
+        {
+            turnManager.SetTrigger("PlayerToEnemy");
+        }
+        else if(turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
+        {
+            turnManager.SetTrigger("EnemyToPlayer");
+        }
+    }
 }
