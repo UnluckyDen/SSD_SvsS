@@ -14,7 +14,7 @@ namespace Card.Data
             public int healCount;
             public int manaCount;
             public int drawsCardCount;
-            
+            public CardData getTargetCard;
                 
             public EffectsTemplate effect;
         }

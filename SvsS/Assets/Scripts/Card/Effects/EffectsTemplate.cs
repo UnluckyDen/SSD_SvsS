@@ -1,12 +1,13 @@
+using Card.Data;
 using UnityEngine;
 
 namespace Card.Effects
 {
     public class EffectsTemplate : MonoBehaviour
     {
-        void AddDamage(int damage)
+        void AddDamage(int count)
         {
-            
+            if (count == 0) return;
         }
 
         void ApplyDamage()
@@ -14,9 +15,9 @@ namespace Card.Effects
             
         }
 
-        void AddHeal(int heal)
+        void AddHeal(int count)
         {
-            
+            if (count == 0) return;
         }
 
         void ApplyHeal()
@@ -24,28 +25,30 @@ namespace Card.Effects
             
         }
 
-        void AddMana(int mana)
+        void AddMana(int count)
         {
-            
+            if (count == 0) return;
         }
 
-        void DrawCard()
+        void DrawCard(int count)
         {
-            
+            if (count == 0) return;
         }
 
-        void DiscardCards()
+        void DiscardCards(int count)
         {
-            
+            if (count == 0) return;
         }
 
-        void GetTargetCard()
+        void GetTargetCard(CardData card)
         {
+            if (card==null) return;
             
         }
 
         void TestEffect(string message)
         {
+            if (message == "") return;
             Debug.Log(message: message);
         }
         
