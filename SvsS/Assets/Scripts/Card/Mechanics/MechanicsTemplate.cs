@@ -1,9 +1,9 @@
 using Card.Data;
 using UnityEngine;
 
-namespace Card.Effects
+namespace Card.Mechanics
 {
-    public class EffectsTemplate : MonoBehaviour
+    public class MechanicsTemplate : MonoBehaviour
     {
         void AddDamage(int count)
         {
