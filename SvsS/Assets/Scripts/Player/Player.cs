@@ -1,5 +1,5 @@
 using UnityEngine;
-using Players.Data;
+using Players;
 using System.Collections.Generic;
 using Card.Data;
 

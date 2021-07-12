@@ -6,7 +6,7 @@ public class GameHandler : MonoBehaviour
     public HealthSystem healthSystem;
     void Start()
     {
-        healthSystem = playerController.HealthSystem;
+        healthSystem = playerController.healthSystem;
         Debug.Log("Health = " + healthSystem.GetHp());
     }
     public void BtnDamage(int amount)
