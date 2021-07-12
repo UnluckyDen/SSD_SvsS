@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7796e1a9c87504fb254ccc14c2974c, type: 3}
   m_Name: EffectsTest
   m_EditorClassIdentifier: 
-  effectsSettingsList:
-  - damageCount: 0
-    healCount: 0
-    manaCount: 0
-    drawsCardCount: 0
-    effect: {fileID: 0}
+  _addDamages:
+  - {fileID: 7222795928594225006, guid: 43ca4ec3192156b4493899b34bb2b7a4, type: 3}
+  _addHeals: []
+  _getCards: []

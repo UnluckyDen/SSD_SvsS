@@ -1,3 +1,5 @@
+using Systems;
+using UI;
 using UnityEngine;
 
 namespace Players
@@ -20,11 +22,9 @@ namespace Players
 
         void Update()
         {
-            if (HealthSystem.GetHp() == 0)
-            {
-                Debug.Log("Player died");
-                Destroy(gameObject);
-            }
+            if (HealthSystem.GetHp() != 0) return;
+            Debug.Log("Player died");
+            Destroy(gameObject);
         }
     }
 }

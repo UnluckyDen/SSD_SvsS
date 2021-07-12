@@ -9,7 +9,7 @@ namespace Systems
     public class CardCreator : MonoBehaviour
     {
 
-        public void CreateCard(CardData card)
+        public static void CreateCard(CardData card)
         {
             var cartGAmeObject = Instantiate(card.cardPrefab,new Vector3(0f,0f,0f),Quaternion.Euler(-90f,0f,0f));
             cartGAmeObject.GetComponentInChildren<Image>().sprite = card.sprite;

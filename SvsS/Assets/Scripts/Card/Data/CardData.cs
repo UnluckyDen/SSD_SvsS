@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 namespace Card.Data
 {
@@ -13,6 +12,6 @@ namespace Card.Data
             public Sprite sprite;
             public GameObject cardPrefab;
             
-            public List<MechanicEffectsData> cardEffect;
+            public MechanicsData cardMechanic;
     }
 }

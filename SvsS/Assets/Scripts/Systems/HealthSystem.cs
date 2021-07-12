@@ -1,34 +1,37 @@
 using System;
 
-public class HealthSystem
+namespace Systems
 {
-    public event EventHandler OnHealthChanged;
-    private int hp;
-    private int hpMax;
+    public class HealthSystem
+    {
+        public event EventHandler OnHealthChanged;
+        private int _hp;
+        private readonly int _hpMax;
 
-    public HealthSystem(int hpmax)
-    {
-        this.hpMax = hpmax;
-        hp = hpmax;
-    }
-    public int GetHp()
-    {
-        return hp;
-    }
-    public float GetHpPercent()
-    {
-        return (float)hp / hpMax;
-    }
-    public void Damage(int dmgAmount)
-    {
-        hp -= dmgAmount;
-        if (hp < 0) hp = 0;
-        if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
-    }
-    public void Heal(int healAmount)
-    {
-        hp += healAmount;
-        if (hp > hpMax) hp = hpMax;
-        if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+        public HealthSystem(int maxHp)
+        {
+            this._hpMax = maxHp;
+            _hp = maxHp;
+        }
+        public int GetHp()
+        {
+            return _hp;
+        }
+        public float GetHpPercent()
+        {
+            return (float)_hp / _hpMax;
+        }
+        public void Damage(int dmgAmount)
+        {
+            _hp -= dmgAmount;
+            if (_hp < 0) _hp = 0;
+            OnHealthChanged?.Invoke(this, EventArgs.Empty);
+        }
+        public void Heal(int healAmount)
+        {
+            _hp += healAmount;
+            if (_hp > _hpMax) _hp = _hpMax;
+            OnHealthChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
