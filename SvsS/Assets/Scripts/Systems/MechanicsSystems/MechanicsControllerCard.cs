@@ -1,17 +1,17 @@
 using System;
-using Interfaces;
 using System.Collections.Generic;
-using System.Reflection;
 using Card.Data;
-using UnityEngine;
+using Interfaces;
 using JetBrains.Annotations;
+using Players;
+using UnityEngine;
 
-namespace Players
+namespace Systems.MechanicsSystems
 {
-    class PlayerController<T> : MonoBehaviour //из-за "T юнити считает, что это не монобех скрипт,".С каждой секундой я всё больше и больше жалею, что мы не юзам LEOEcs
+    public class MechanicsControllerCard : MonoBehaviour
     {
         public List<Player> players;
-        private readonly List<IMechanic<T>> _mechanics = new List<IMechanic<T>>();
+        private readonly List<IMechanic<CardData>> _mechanics = new List<IMechanic<CardData>>();
         public CardData _cardData;
 
         private void Start()
@@ -20,17 +20,13 @@ namespace Players
             //_mechanics.Add((IMechanic<T>) _cardData.addDamages[0]);
             foreach (var testMechanic in _cardData.testsMechanics)
             {
-                _mechanics.Add((IMechanic<T>) testMechanic);
-            }
-            foreach (var damage in _cardData.addDamages)
-            {
-                _mechanics.Add((IMechanic<T>) damage);
+                _mechanics.Add(testMechanic as IMechanic<CardData>);
             }
 
             ApplyMechanics(_mechanics);
         }
 
-        private void ApplyMechanics([NotNull] List<IMechanic<T>> mechanics)
+        private void ApplyMechanics([NotNull] List<IMechanic<CardData>> mechanics)
         {
             if (mechanics == null) throw new ArgumentNullException(nameof(mechanics));
 

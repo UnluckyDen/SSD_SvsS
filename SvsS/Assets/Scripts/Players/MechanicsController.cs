@@ -1,14 +1,12 @@
-using System;
-using Interfaces;
+﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Card.Data;
-using UnityEngine;
+using Interfaces;
 using JetBrains.Annotations;
 
 namespace Players
 {
-    class PlayerController<T> : MonoBehaviour //из-за "T юнити считает, что это не монобех скрипт,".С каждой секундой я всё больше и больше жалею, что мы не юзам LEOEcs
+    public class MechanicsController<T>
     {
         public List<Player> players;
         private readonly List<IMechanic<T>> _mechanics = new List<IMechanic<T>>();
@@ -22,15 +20,11 @@ namespace Players
             {
                 _mechanics.Add((IMechanic<T>) testMechanic);
             }
-            foreach (var damage in _cardData.addDamages)
-            {
-                _mechanics.Add((IMechanic<T>) damage);
-            }
+            ApplyEffects(_mechanics);
 
-            ApplyMechanics(_mechanics);
         }
 
-        private void ApplyMechanics([NotNull] List<IMechanic<T>> mechanics)
+        private void ApplyEffects([NotNull] List<IMechanic<T>> mechanics)
         {
             if (mechanics == null) throw new ArgumentNullException(nameof(mechanics));
 
@@ -38,7 +32,6 @@ namespace Players
             {
                 mechanic.DoMechanic(mechanic.GetValue(), players[mechanic.GetTarget()]);
             }
-
             /*
  * у нас будет событие, которым мы подпишемся на выход карты. генератор событий будет на столе.
  * получив данные карты, мы будем вызывать метод DoMechanic со значениями, которые внутри карты.

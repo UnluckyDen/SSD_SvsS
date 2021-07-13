@@ -1,11 +1,12 @@
-﻿using Interfaces;
+﻿using System;
+using Interfaces;
 using Players;
 using UnityEngine;
 
 namespace Card.Mechanics
 {
     [System.Serializable]
-    class AddDamage : MonoBehaviour, IMechanic<int>
+    public class AddDamage : IMechanic<int>
 
     {
         [SerializeField] private int _value;
@@ -18,6 +19,24 @@ namespace Card.Mechanics
         public int GetValue()
         {
             return _value;
+        }
+
+        public enum WhoIsTarget
+        {
+            CurrentPlayer ,
+            Enemy
+        };
+
+        public WhoIsTarget target = WhoIsTarget.CurrentPlayer;
+
+        public int GetTarget()
+        {
+            return target switch
+            {
+                WhoIsTarget.CurrentPlayer => 0,
+                WhoIsTarget.Enemy => 1,
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
     }
 }

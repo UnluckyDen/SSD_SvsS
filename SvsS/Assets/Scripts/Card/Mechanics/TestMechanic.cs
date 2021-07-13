@@ -1,6 +1,4 @@
 ﻿using System;
-using Systems;
-using Card.Data;
 using Interfaces;
 using Players;
 using UnityEngine;
@@ -8,17 +6,15 @@ using UnityEngine;
 namespace Card.Mechanics
 {
     [System.Serializable]
-    public class GetCard : IMechanic<CardData>
-
+    public class TestMechanic: IMechanic<String>
     {
-        [SerializeField] private CardData _value;
-
-        public void DoMechanic(CardData value, Player player)
+        [SerializeField] private string _value;
+        public void DoMechanic(string mechanic, Player player)
         {
-            CardCreator.CreateCard(value);
+            Debug.Log(mechanic + " " + target);
         }
 
-        public CardData GetValue()
+        public string GetValue()
         {
             return _value;
         }

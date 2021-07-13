@@ -6,5 +6,6 @@ namespace Interfaces
     {
        void DoMechanic(T mechanic, Player player);
        T GetValue();
+       int GetTarget();
     }
 }
