@@ -12,7 +12,7 @@ namespace Manager
         public void Start()
         {
             turnManager.SetTrigger(PlayerFirst);
-            player.healthSystem.OnDied += HealthSystem_OnDied;
+            player.HealthSystem.OnDied += HealthSystem_OnDied;
         }
 
         private void HealthSystem_OnDied(object sender, System.EventArgs e)

@@ -9,7 +9,7 @@ namespace Systems
         private HealthSystem _healthSystem;
         void Start()
         {
-            _healthSystem = playerController.healthSystem;
+            _healthSystem = playerController.HealthSystem;
             Debug.Log("Health = " + _healthSystem.GetHp());
         }
         public void BtnDamage(int amount)
