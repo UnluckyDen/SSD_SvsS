@@ -5,6 +5,7 @@ namespace Systems
     public class HealthSystem
     {
         public event EventHandler OnHealthChanged;
+        public event EventHandler OnDied;
         private int _hp;
         private readonly int _hpMax;
 

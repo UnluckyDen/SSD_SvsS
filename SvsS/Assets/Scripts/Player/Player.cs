@@ -1,7 +1,6 @@
 using UnityEngine;
-using Players;
-using System.Collections.Generic;
-using Card.Data;
+using Systems;
+using UI;
 
 namespace Players
 {
