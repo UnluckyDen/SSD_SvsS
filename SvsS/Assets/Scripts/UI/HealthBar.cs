@@ -1,17 +1,21 @@
+using Systems;
 using UnityEngine;
 
-public class HealthBar : MonoBehaviour
+namespace UI
 {
-    private HealthSystem healthSystem;
-    private Transform bar;
-    public void Setup(HealthSystem healthSystem)
+    public class HealthBar : MonoBehaviour
     {
-        this.healthSystem = healthSystem;
-        bar = transform.Find("Bar");
-        healthSystem.OnHealthChanged += HealthSystemOnHealthChanged;
-    }
-    private void HealthSystemOnHealthChanged(object sender, System.EventArgs e)
-    {
-        bar.localScale = new Vector3(healthSystem.GetHpPercent(), 1);
+        private HealthSystem _healthSystem;
+        private Transform _bar;
+        public void Setup(HealthSystem healthSystem)
+        {
+            this._healthSystem = healthSystem;
+            _bar = transform.Find("Bar");
+            healthSystem.OnHealthChanged += HealthSystemOnHealthChanged;
+        }
+        private void HealthSystemOnHealthChanged(object sender, System.EventArgs e)
+        {
+            _bar.localScale = new Vector3(_healthSystem.GetHpPercent(), 1);
+        }
     }
 }

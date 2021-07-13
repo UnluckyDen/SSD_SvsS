@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Players;
+﻿using Players;
 
 namespace Interfaces
 {
-    interface IMechanic
+    public interface IMechanic<T>
     {
-       void DoMechanic(int value, Player player);
+       void DoMechanic(T mechanic, Player player);
+       T GetValue();
+       int GetTarget();
     }
 }
