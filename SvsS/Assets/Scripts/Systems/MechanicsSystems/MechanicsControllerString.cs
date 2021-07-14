@@ -18,7 +18,7 @@ namespace Systems.MechanicsSystems
         {
             //найти на сцене,пишу в 4.30 поэтому мне лень
             _playableZone = GetComponentInChildren<PlayableZone>();
-            _playableZone.CardIsPlayed += DisplayMessage;
+            _playableZone.CardIsPlayed += ApplyMessage;
             //это тест игроков надо по умному сюда добавлять из плейр контроллера и каждый раз свапать
             players.Add(new Player());
             players.Add(new Player());
@@ -35,7 +35,7 @@ namespace Systems.MechanicsSystems
             _mechanics.Clear();
         }
         
-        private void DisplayMessage(CardData message)
+        private void ApplyMessage(CardData message)
         {
             foreach (var testMechanic in message.testsMechanics)
             {
@@ -46,7 +46,7 @@ namespace Systems.MechanicsSystems
 
         private void OnDestroy()
         {
-            _playableZone.CardIsPlayed -= DisplayMessage;
+            _playableZone.CardIsPlayed -= ApplyMessage;
         }
     }
 }
