@@ -6,9 +6,10 @@ using UnityEngine;
 namespace Card.Mechanics
 {
     [System.Serializable]
-    public class TestMechanic: IMechanic<String>
+    public class TestMechanic : IMechanic<String>
     {
         [SerializeField] private string _value;
+
         public void DoMechanic(string mechanic, Player player)
         {
             Debug.Log(mechanic + " " + target);
@@ -18,10 +19,10 @@ namespace Card.Mechanics
         {
             return _value;
         }
-        
+
         public enum WhoIsTarget
         {
-            CurrentPlayer ,
+            CurrentPlayer,
             Enemy
         };
 

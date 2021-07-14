@@ -14,15 +14,18 @@ namespace Systems
             this._hpMax = maxHp;
             _hp = maxHp;
         }
+
         public int GetHp()
         {
             return _hp;
         }
+
         public float GetHpPercent()
         {
-            return (float)_hp / _hpMax;
+            return (float) _hp / _hpMax;
         }
-        public void Damage(int dmgAmount)
+
+        public void ApplyDamage(int dmgAmount)
         {
             _hp -= dmgAmount;
             if (_hp < 0)
@@ -32,6 +35,7 @@ namespace Systems
             }
             OnHealthChanged?.Invoke(this, EventArgs.Empty);
         }
+
         public void Heal(int healAmount)
         {
             _hp += healAmount;
