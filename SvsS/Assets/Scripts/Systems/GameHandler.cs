@@ -14,7 +14,7 @@ namespace Systems
         }
         public void BtnDamage(int amount)
         {
-            _healthSystem.Damage(amount);
+            _healthSystem.ApplyDamage(amount);
             Debug.Log("Health = " + _healthSystem.GetHp()); 
         }
         public void BtnHeal(int amount)

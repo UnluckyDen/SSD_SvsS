@@ -23,10 +23,10 @@ namespace Card.Mechanics
 
         public enum WhoIsTarget
         {
-            CurrentPlayer ,
+            CurrentPlayer,
             Enemy
         };
-        
+
         [SerializeField] private WhoIsTarget target = WhoIsTarget.CurrentPlayer;
 
         public int GetTarget()

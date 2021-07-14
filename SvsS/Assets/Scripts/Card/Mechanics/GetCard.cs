@@ -16,16 +16,17 @@ namespace Card.Mechanics
         public void DoMechanic(CardData value, Player player)
         {
             CardCreator.CreateCard(value);
+            //добавить в руку игрока
         }
 
         public CardData GetValue()
         {
             return _value;
         }
-        
+
         public enum WhoIsTarget
         {
-            CurrentPlayer ,
+            CurrentPlayer,
             Enemy
         };
 
