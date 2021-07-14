@@ -1,18 +1,19 @@
 using Players;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Manager
 {
     public class TurnController : MonoBehaviour
     {
         public Animator turnManager;
-        public Player player;
+        public List<Player> players;
         private static readonly int PlayerFirst = Animator.StringToHash("PlayerFirst");
 
         public void Start()
         {
             turnManager.SetTrigger(PlayerFirst);
-            player.HealthSystem.OnDied += HealthSystem_OnDied;
+            players[0].HealthSystem.OnDied += HealthSystem_OnDied;           
         }
 
         private void HealthSystem_OnDied(object sender, System.EventArgs e)
@@ -48,6 +49,7 @@ namespace Manager
                 turnManager.SetTrigger("EnemyToPlayer");
             }
         }
+
     }
    
 }

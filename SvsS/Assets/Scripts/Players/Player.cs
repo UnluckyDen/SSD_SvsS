@@ -15,7 +15,7 @@ namespace Players
         {
             _hp = playerSettings.hp;
             HealthSystem = new HealthSystem(_hp);
-            _healthBar = Instantiate(playerSettings.hpBar, new Vector3(0, 3), Quaternion.identity);
+            _healthBar = Instantiate(playerSettings.hpBar, new Vector3(this.transform.position.x, 3), Quaternion.identity);
             hpBar = _healthBar.GetComponent<HealthBar>();
             hpBar.Setup(HealthSystem);
         }

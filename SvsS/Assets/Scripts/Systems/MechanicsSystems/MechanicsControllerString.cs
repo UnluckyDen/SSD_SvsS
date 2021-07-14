@@ -17,7 +17,7 @@ namespace Systems.MechanicsSystems
         private void Start()
         {
             //найти на сцене,пишу в 4.30 поэтому мне лень
-            _playableZone =GetComponent<PlayableZone>();
+            _playableZone = GetComponent<PlayableZone>();
             _playableZone.CardIsPlayed += DisplayMessage;
             //это тест игроков надо по умному сюда добавлять из плейр контроллера и каждый раз свапать
             players.Add(new Player());

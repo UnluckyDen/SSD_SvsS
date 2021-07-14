@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 
 namespace Players
 {
-    class PlayerController<T> : MonoBehaviour //из-за "T юнити считает, что это не монобех скрипт,".С каждой секундой я всё больше и больше жалею, что мы не юзам LEOEcs
+    class PlayerController<T> : MonoBehaviour //из-за "T юнити считает, что это не монобех скрипт,".С каждой секундой я всё больше и больше жалею, что мы не юзам LEOEcs (это бы нам нихуя не помогло)))))
     {
         public List<Player> players;
         private readonly List<IMechanic<T>> _mechanics = new List<IMechanic<T>>();

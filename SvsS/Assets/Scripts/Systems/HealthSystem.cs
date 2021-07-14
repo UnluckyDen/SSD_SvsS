@@ -25,7 +25,11 @@ namespace Systems
         public void Damage(int dmgAmount)
         {
             _hp -= dmgAmount;
-            if (_hp < 0) _hp = 0;
+            if (_hp < 0)
+            {
+                _hp = 0;
+                OnDied?.Invoke(this, EventArgs.Empty);
+            }
             OnHealthChanged?.Invoke(this, EventArgs.Empty);
         }
         public void Heal(int healAmount)
