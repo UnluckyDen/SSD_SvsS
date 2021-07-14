@@ -6,14 +6,14 @@ using UnityEngine;
 namespace Card.Mechanics
 {
     [System.Serializable]
-    public class AddDamage : IMechanic<int>
+    public class AddHeal : IMechanic<int>
 
     {
         [SerializeField] private int _value;
 
         public void DoMechanic(int value, Player player)
         {
-            player.HealthSystem.ApplyDamage(value);
+            player.HealthSystem.Heal(value);
         }
 
         public int GetValue()
@@ -23,11 +23,11 @@ namespace Card.Mechanics
 
         public enum WhoIsTarget
         {
-            CurrentPlayer ,
+            CurrentPlayer,
             Enemy
         };
 
-        public WhoIsTarget target = WhoIsTarget.CurrentPlayer;
+        [SerializeField] private WhoIsTarget target = WhoIsTarget.CurrentPlayer;
 
         public int GetTarget()
         {

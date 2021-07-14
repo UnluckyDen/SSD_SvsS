@@ -1,4 +1,6 @@
 ﻿using System;
+using Systems;
+using Card.Data;
 using Interfaces;
 using Players;
 using UnityEngine;
@@ -6,28 +8,29 @@ using UnityEngine;
 namespace Card.Mechanics
 {
     [System.Serializable]
-    public class AddDamage : IMechanic<int>
+    public class GetCard : IMechanic<CardData>
 
     {
-        [SerializeField] private int _value;
+        [SerializeField] private CardData _value;
 
-        public void DoMechanic(int value, Player player)
+        public void DoMechanic(CardData value, Player player)
         {
-            player.HealthSystem.ApplyDamage(value);
+            CardCreator.CreateCard(value);
+            //добавить в руку игрока
         }
 
-        public int GetValue()
+        public CardData GetValue()
         {
             return _value;
         }
 
         public enum WhoIsTarget
         {
-            CurrentPlayer ,
+            CurrentPlayer,
             Enemy
         };
 
-        public WhoIsTarget target = WhoIsTarget.CurrentPlayer;
+        [SerializeField] private WhoIsTarget target = WhoIsTarget.CurrentPlayer;
 
         public int GetTarget()
         {

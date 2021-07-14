@@ -1,23 +1,27 @@
-using UnityEngine;
 using Players;
-public class GameHandler : MonoBehaviour
-{
-    public Player playerController;
-    public HealthSystem healthSystem;
-    void Start()
-    {
-        healthSystem = playerController.HealthSystem;
-        Debug.Log("Health = " + healthSystem.GetHp());
-    }
-    public void BtnDamage(int amount)
-    {
-        healthSystem.Damage(amount);
-        Debug.Log("Health = " + healthSystem.GetHp()); 
-    }
-    public void BtnHeal(int amount)
-    {
-        healthSystem.Heal(amount);
-        Debug.Log("Health = " + healthSystem.GetHp());
-    }
+using UnityEngine;
 
+namespace Systems
+{
+    public class GameHandler : MonoBehaviour
+    {
+        public Player playerController;
+        private HealthSystem _healthSystem;
+        void Start()
+        {
+            _healthSystem = playerController.HealthSystem;
+            Debug.Log("Health = " + _healthSystem.GetHp());
+        }
+        public void BtnDamage(int amount)
+        {
+            _healthSystem.ApplyDamage(amount);
+            Debug.Log("Health = " + _healthSystem.GetHp()); 
+        }
+        public void BtnHeal(int amount)
+        {
+            _healthSystem.Heal(amount);
+            Debug.Log("Health = " + _healthSystem.GetHp());
+        }
+
+    }
 }

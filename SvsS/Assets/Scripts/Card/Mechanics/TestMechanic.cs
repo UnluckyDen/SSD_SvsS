@@ -6,28 +6,27 @@ using UnityEngine;
 namespace Card.Mechanics
 {
     [System.Serializable]
-    public class AddDamage : IMechanic<int>
-
+    public class TestMechanic : IMechanic<String>
     {
-        [SerializeField] private int _value;
+        [SerializeField] private string _value;
 
-        public void DoMechanic(int value, Player player)
+        public void DoMechanic(string mechanic, Player player)
         {
-            player.HealthSystem.ApplyDamage(value);
+            Debug.Log(mechanic + " " + target);
         }
 
-        public int GetValue()
+        public string GetValue()
         {
             return _value;
         }
 
         public enum WhoIsTarget
         {
-            CurrentPlayer ,
+            CurrentPlayer,
             Enemy
         };
 
-        public WhoIsTarget target = WhoIsTarget.CurrentPlayer;
+        [SerializeField] private WhoIsTarget target = WhoIsTarget.CurrentPlayer;
 
         public int GetTarget()
         {
