@@ -11,12 +11,12 @@ namespace Systems
 
         public event PlayableZoneHandler CardIsPlayed;
 
-        private CardHandler _card;
+        private CardInfo _card;
 
         private void Update()
         {
-            if (GetComponentInChildren<CardHandler>() == null) return;
-            _card = GetComponentInChildren<CardHandler>();
+            if (GetComponentInChildren<CardInfo>() == null) return;
+            _card = GetComponentInChildren<CardInfo>();
             CardPlayed();
             Destroy(_card.gameObject);
         }

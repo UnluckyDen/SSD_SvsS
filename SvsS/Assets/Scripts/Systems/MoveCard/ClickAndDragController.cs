@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.iOS;
-using UnityEngine.Serialization;
 
 namespace Systems.MoveCard
 {
@@ -11,21 +9,22 @@ namespace Systems.MoveCard
         public float upDistance;
 
         private GameObject _clickedCGameObject;
-        private Vector3 _inputPosition;
 
-        public delegate void CardCondition();
+        public delegate void ElementCondition(GameObject message);
 
-        public event CardCondition CardRelease;
+        public delegate void DragCondition(GameObject message1, Vector3 message2);
+
+        public event DragCondition ElementClick;
+        public event DragCondition ElementDrag;
+        public event ElementCondition ElementRelease;
 
         public void OnPointerDown(PointerEventData eventData)
         {
             var ray = Camera.main.ScreenPointToRay(eventData.position);
             Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red);
-            if (Physics.Raycast(Camera.main.transform.position, ray.direction, out var hit))
-            {
-                _inputPosition = new Vector3(hit.point.x, hit.point.y, -upDistance);
-                _clickedCGameObject = hit.collider.gameObject;
-            }
+            if (!Physics.Raycast(Camera.main.transform.position, ray.direction, out var hit)) return;
+            _clickedCGameObject = hit.collider.gameObject;
+            ElementClick?.Invoke(_clickedCGameObject, new Vector3(hit.point.x, hit.point.y, -upDistance));
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -34,18 +33,16 @@ namespace Systems.MoveCard
             Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red);
             if (Physics.Raycast(Camera.main.transform.position, ray.direction, out var hit))
             {
-                _inputPosition = new Vector3(hit.point.x, hit.point.y, -upDistance);
+                ElementDrag?.Invoke(_clickedCGameObject
+                    
+                    , new Vector3(hit.point.x, hit.point.y, -upDistance));
             }
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            CardRelease?.Invoke();
+            ElementRelease?.Invoke(_clickedCGameObject);
             _clickedCGameObject = null;
         }
-
-        public GameObject ClickObject => _clickedCGameObject;
-
-        public Vector3 InputPosition => _inputPosition;
     }
 }

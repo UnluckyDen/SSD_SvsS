@@ -21,7 +21,7 @@ namespace Systems
             texts[1].text = cardData.description;
             texts[2].text = (cardData.manaCost).ToString();
 
-            cardGAmeObject.AddComponent<CardHandler>().Data = cardData;
+            cardGAmeObject.AddComponent<CardInfo>().Data = cardData;
         }
     }
 }
