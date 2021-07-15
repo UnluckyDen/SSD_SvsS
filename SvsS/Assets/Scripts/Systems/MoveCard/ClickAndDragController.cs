@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.iOS;
-using UnityEngine.Serialization;
 
 namespace Systems.MoveCard
 {
@@ -17,8 +15,8 @@ namespace Systems.MoveCard
         public delegate void DragCondition(GameObject message1, Vector3 message2);
 
         public event DragCondition ElementClick;
-        public event ElementCondition ElementRelease;
         public event DragCondition ElementDrag;
+        public event ElementCondition ElementRelease;
 
         public void OnPointerDown(PointerEventData eventData)
         {
@@ -35,7 +33,9 @@ namespace Systems.MoveCard
             Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red);
             if (Physics.Raycast(Camera.main.transform.position, ray.direction, out var hit))
             {
-                ElementDrag?.Invoke(hit.collider.gameObject, new Vector3(hit.point.x, hit.point.y, -upDistance));
+                ElementDrag?.Invoke(_clickedCGameObject
+                    
+                    , new Vector3(hit.point.x, hit.point.y, -upDistance));
             }
         }
 

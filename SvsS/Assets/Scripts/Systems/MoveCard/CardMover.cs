@@ -20,16 +20,17 @@ namespace Systems.MoveCard
         // ReSharper disable Unity.PerformanceAnalysis
         void MoveCard(GameObject card, Vector3 dragPosition)
         {
-            if (card.GetComponent<CardHandler>() != null)
+            if (card.GetComponent<CardInfo>() != null)
             {
                 card.transform.position = dragPosition;
             }
         }
 
-        void ResetCardPosition()
+        void ResetCardPosition(GameObject card)
         {
             //возвращает карту в руку
             Debug.Log("Pasasi raz ne realizoval");
+            card.transform.localPosition = Vector3.zero;
         }
 
         private void CardPlay(GameObject card)
@@ -37,8 +38,8 @@ namespace Systems.MoveCard
             if (card == null) return;
             var ray = new Ray {origin = card.transform.position, direction = Vector3.forward};
             Debug.DrawRay(ray.origin, ray.direction, Color.green);
-            if (!Physics.Raycast(ray.origin, ray.direction, out var hit)) return;
-            if (hit.collider.gameObject.GetComponentInParent<PlayableZone>() != null)
+            if (Physics.Raycast(ray.origin, ray.direction, out var hit) &&
+                hit.collider.gameObject.GetComponentInParent<PlayableZone>() != null)
             {
                 card.transform.position =
                     hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform.position;
@@ -46,7 +47,8 @@ namespace Systems.MoveCard
             }
             else
             {
-                ResetCardPosition();
+                Debug.Log("Takto karta resetatsa doljna");
+                ResetCardPosition(card);
             }
         }
 

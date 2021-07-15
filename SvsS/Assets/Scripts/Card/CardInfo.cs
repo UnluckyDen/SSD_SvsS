@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace Card
 {
-    public class CardHandler : MonoBehaviour
+    public class CardInfo : MonoBehaviour
     {
         [SerializeField] private CardData cardData;
 
