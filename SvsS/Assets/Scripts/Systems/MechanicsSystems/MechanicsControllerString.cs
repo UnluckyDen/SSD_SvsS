@@ -10,7 +10,7 @@ namespace Systems.MechanicsSystems
 {
     public class MechanicsControllerString : MonoBehaviour
     {
-        public List<Player> players;
+        public List<Player> Players;
         private PlayableZone _playableZone;
         private readonly List<IMechanic<String>> _mechanics = new List<IMechanic<String>>();
 
@@ -20,8 +20,8 @@ namespace Systems.MechanicsSystems
             _playableZone = GetComponentInChildren<PlayableZone>();
             _playableZone.CardIsPlayed += ApplyMessage;
             //это тест игроков надо по умному сюда добавлять из плейр контроллера и каждый раз свапать
-            players.Add(new Player());
-            players.Add(new Player());
+            Players.Add(new Player());
+            Players.Add(new Player());
         }
 
         private void ApplyMechanics([NotNull] List<IMechanic<String>> mechanics)
@@ -30,7 +30,7 @@ namespace Systems.MechanicsSystems
 
             foreach (var mechanic in mechanics)
             {
-                mechanic.DoMechanic(mechanic.GetValue(), players[mechanic.GetTarget()]);
+                mechanic.DoMechanic(mechanic.GetValue(), Players[mechanic.GetTarget()]);
             }
             _mechanics.Clear();
         }

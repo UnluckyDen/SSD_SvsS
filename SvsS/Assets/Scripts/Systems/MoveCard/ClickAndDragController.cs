@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.iOS;
@@ -7,6 +8,8 @@ namespace Systems.MoveCard
     public class ClickAndDragController : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
         public float upDistance;
+
+        private Camera _camera;
 
         private GameObject _clickedCGameObject;
 
@@ -18,20 +21,25 @@ namespace Systems.MoveCard
         public event DragCondition ElementDrag;
         public event ElementCondition ElementRelease;
 
+        private void Start()
+        {
+            _camera = Camera.main;
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
-            var ray = Camera.main.ScreenPointToRay(eventData.position);
-            Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red);
-            if (!Physics.Raycast(Camera.main.transform.position, ray.direction, out var hit)) return;
+            var ray = _camera.ScreenPointToRay(eventData.position);
+            Debug.DrawRay(_camera.transform.position, ray.direction, Color.red);
+            if (!Physics.Raycast(_camera.transform.position, ray.direction, out var hit)) return;
             _clickedCGameObject = hit.collider.gameObject;
             ElementClick?.Invoke(_clickedCGameObject, new Vector3(hit.point.x, hit.point.y, -upDistance));
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            var ray = Camera.main.ScreenPointToRay(eventData.position);
-            Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red);
-            if (Physics.Raycast(Camera.main.transform.position, ray.direction, out var hit))
+            var ray = _camera.ScreenPointToRay(eventData.position);
+            Debug.DrawRay(_camera.transform.position, ray.direction, Color.red);
+            if (Physics.Raycast(_camera.transform.position, ray.direction, out var hit))
             {
                 ElementDrag?.Invoke(_clickedCGameObject
                     
