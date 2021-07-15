@@ -23,3 +23,5 @@ MonoBehaviour:
   testsMechanics:
   - _value: AAAAAAAAAA
     target: 0
+  - _value: "\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411\u0411"
+    target: 1
