@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Players.Deck
 {
+    [RequireComponent(typeof(CardCreator))]
     public class Deck : MonoBehaviour
     {
         public Player DeckOwner;

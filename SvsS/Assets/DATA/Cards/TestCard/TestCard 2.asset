@@ -15,9 +15,12 @@ MonoBehaviour:
   name: "\u0421\u043E\u0431\u0430\u043A\u0430 \u0441 \u043F\u0438\u0441\u0442\u043E\u043B\u0435\u0442\u043E\u043C
     \u0437\u0430 10 \u043C\u0430\u043D\u044B"
   description: "\u0417\u0430\u0431\u0440\u0430\u043B\u0430 \u043F\u0430\u0448\u0442\u0435\u0442"
-  manaCost: 10
+  manaCost: 0
   sprite: {fileID: 21300000, guid: 372ab8aaab89a0f4f93198fdc7b45ca3, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
+  ParticleSystems:
+  - {fileID: 8534253997393829286, guid: 3646bbf4ccff50c44bbd34cbd519654c, type: 3}
+  - {fileID: 8534253997393829286, guid: 3646bbf4ccff50c44bbd34cbd519654c, type: 3}
   addDamages: []
   addHeals: []
   getCards: []

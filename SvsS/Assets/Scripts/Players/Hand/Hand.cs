@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Card;
@@ -11,7 +12,6 @@ namespace Players.Hand
         public List<GameObject> CardsHolders;
         public GameObject CardHolderPrefab;
 
-
         void Update()
         {
             CardInHandController();
@@ -20,10 +20,19 @@ namespace Players.Hand
         public void AddCardToHand(CardInfo card)
         {
             var cardHolder = Instantiate(CardHolderPrefab, Vector3.zero, Quaternion.identity);
+            
+            //
             cardHolder.transform.SetParent(gameObject.transform);
+            cardHolder.transform.localPosition = Vector3.zero;
+            cardHolder.transform.localRotation = transform.localRotation;
             cardHolder.transform.localScale = gameObject.transform.localScale;
+            
+            
             card.gameObject.transform.SetParent(cardHolder.transform);
+            //card.transform.rotation = transform.rotation;
             card.transform.localPosition = cardHolder.transform.position;
+            card.transform.localScale = new Vector3(93,93,93);
+            
             CardsHolders.Add(cardHolder);
         }
 
