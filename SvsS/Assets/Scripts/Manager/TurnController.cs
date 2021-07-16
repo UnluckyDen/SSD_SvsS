@@ -8,24 +8,43 @@ namespace Manager
     {
         public Animator turnManager;
         public List<Player> players;
+        public bool IsPlayerFirst;
         private static readonly int PlayerFirst = Animator.StringToHash("PlayerFirst");
+        private static readonly int EnemyFirst = Animator.StringToHash("EnemyFirst");
+        private static readonly int PlayerToEnemy = Animator.StringToHash("PlayerToEnemy");
+        private static readonly int EnemyToPlayer = Animator.StringToHash("EnemyToPlayer");
+        private static readonly int PlayerToEnd = Animator.StringToHash("PlayerToEnd");
+        private static readonly int EnemyToEnd = Animator.StringToHash("EnemyToEnd");
 
+        private int currentState;
         public void Start()
         {
-            turnManager.SetTrigger(PlayerFirst);
-            players[0].HealthSystem.OnDied += HealthSystem_OnDied;           
+            if (IsPlayerFirst == true)
+            {
+                turnManager.SetTrigger(PlayerFirst);
+                currentState = GetCurrentState();
+            }
+            else
+            {
+                turnManager.SetTrigger(EnemyFirst);
+                currentState = GetCurrentState();
+            }
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].HealthSystem.OnDied += HealthSystem_OnDied;
+            }
         }
-
-        private void HealthSystem_OnDied(object sender, System.EventArgs e)
+        private void HealthSystem_OnDied(Player player)
         {
+            Debug.Log("OnDied event is happened");
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
-                turnManager.SetTrigger("EnemyToEnd");
+                turnManager.SetTrigger(EnemyToEnd);
                 Debug.Log("EnemyToEnd is Activated");
             }
             else if(turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
-                turnManager.SetTrigger("PlayerToEnd");
+                turnManager.SetTrigger(PlayerToEnd);
                 Debug.Log("PlayerToEnd is Activated");
             }
         }
@@ -42,12 +61,23 @@ namespace Manager
         {
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
-                turnManager.SetTrigger("PlayerToEnemy");
+                turnManager.SetTrigger(PlayerToEnemy);
             }
             else if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
-                turnManager.SetTrigger("EnemyToPlayer");
+                turnManager.SetTrigger(EnemyToPlayer);
             }
+        }
+        public void OnDestroy()
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].HealthSystem.OnDied -= HealthSystem_OnDied;
+            }
+        }
+        public int GetCurrentState()
+        {
+            return turnManager.GetCurrentAnimatorStateInfo(0).fullPathHash;
         }
 
     }

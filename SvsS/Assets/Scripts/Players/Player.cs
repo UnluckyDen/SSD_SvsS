@@ -22,9 +22,9 @@ namespace Players
 
         void Update()
         {
-            if (HealthSystem.GetHp() != 0) return;
-            Debug.Log("Player died");
-            Destroy(gameObject);
+            //if (HealthSystem.GetHp() != 0) return;
+            //Debug.Log("Player died (from player's update method roflanebalo)");
+            //Destroy(gameObject);
         }
     }
 }

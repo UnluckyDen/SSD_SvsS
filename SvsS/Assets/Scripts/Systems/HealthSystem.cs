@@ -1,11 +1,16 @@
+using Players;
 using System;
+using UnityEngine;
 
 namespace Systems
 {
     public class HealthSystem
     {
         public event EventHandler OnHealthChanged;
-        public event EventHandler OnDied;
+
+        public delegate void DeathCallback(Player player);
+        public DeathCallback OnDied;
+
         private int _hp;
         private readonly int _hpMax;
 
@@ -30,8 +35,11 @@ namespace Systems
             _hp -= dmgAmount;
             if (_hp < 0)
             {
-                _hp = 0;
-                OnDied?.Invoke(this, EventArgs.Empty);
+                _hp = 0;               
+            }
+            if (_hp == 0)
+            {
+                Debug.Log("OnDied is invoked");
             }
             OnHealthChanged?.Invoke(this, EventArgs.Empty);
         }
