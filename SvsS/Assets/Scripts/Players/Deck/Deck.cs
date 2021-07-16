@@ -32,7 +32,7 @@ namespace Players.Deck
 
         public void DrawCard()
         {
-            if (_cardDatas == null) return;
+            if (_cardDatas.Count <= 0) return;
             var card = _cardCreator.CreateCard(_cardDatas[0]);
             DeckOwner.Hand.AddCardToHand(card.GetComponent<CardInfo>());
             _cardDatas.Remove(_cardDatas[0]);

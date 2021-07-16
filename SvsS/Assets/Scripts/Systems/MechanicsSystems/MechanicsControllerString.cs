@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Card.Data;
 using Interfaces;
 using JetBrains.Annotations;
@@ -10,18 +11,17 @@ namespace Systems.MechanicsSystems
 {
     public class MechanicsControllerString : MonoBehaviour
     {
-        public List<Player> Players;
+        private List<Player> _players;
+        private PlayerController _playerController;
         private PlayableZone _playableZone;
-        private readonly List<IMechanic<String>> _mechanics = new List<IMechanic<String>>();
+        private readonly List<IMechanic<string>> _mechanics = new List<IMechanic<string>>();
 
         private void Start()
         {
-            //найти на сцене,пишу в 4.30 поэтому мне лень
             _playableZone = GetComponentInChildren<PlayableZone>();
             _playableZone.CardIsPlayed += ApplyMessage;
-            //это тест игроков надо по умному сюда добавлять из плейр контроллера и каждый раз свапать
-            Players.Add(new Player());
-            Players.Add(new Player());
+            _playerController = FindObjectOfType<PlayerController>();
+            _players = _playerController.Players;
         }
 
         private void ApplyMechanics([NotNull] List<IMechanic<String>> mechanics)
@@ -30,7 +30,7 @@ namespace Systems.MechanicsSystems
 
             foreach (var mechanic in mechanics)
             {
-                mechanic.DoMechanic(mechanic.GetValue(), Players[mechanic.GetTarget()]);
+                mechanic.DoMechanic(mechanic.GetValue(), _players[mechanic.GetTarget()]);
             }
             _mechanics.Clear();
         }
