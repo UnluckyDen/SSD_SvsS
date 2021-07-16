@@ -20,6 +20,7 @@ namespace Systems.MoveCard
         // ReSharper disable Unity.PerformanceAnalysis
         void MoveCard(GameObject card, Vector3 dragPosition)
         {
+            if(card == null) return;
             if (card.GetComponent<CardInfo>() != null)
             {
                 card.transform.position = dragPosition; //new Vector3(dragPosition.x, dragPosition.y, 0f);
@@ -29,8 +30,6 @@ namespace Systems.MoveCard
 
         void ResetCardPosition(GameObject card)
         {
-            //возвращает карту в руку
-            Debug.Log("Pasasi raz ne realizoval");
             card.transform.localPosition = Vector3.zero;
         }
 
@@ -48,7 +47,6 @@ namespace Systems.MoveCard
             }
             else
             {
-                Debug.Log("Takto karta resetatsa doljna");
                 ResetCardPosition(card);
             }
         }

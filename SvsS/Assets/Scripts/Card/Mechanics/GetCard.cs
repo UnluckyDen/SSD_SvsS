@@ -15,7 +15,7 @@ namespace Card.Mechanics
 
         public void DoMechanic(CardData value, Player player)
         {
-            CardCreator.CreateCard(value);
+            //CardCreator.CreateCard(value);
             //добавить в руку игрока
         }
 

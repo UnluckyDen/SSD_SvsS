@@ -16,7 +16,7 @@ namespace Systems
 
         public HealthSystem(int maxHp)
         {
-            this._hpMax = maxHp;
+            _hpMax = maxHp;
             _hp = maxHp;
         }
 

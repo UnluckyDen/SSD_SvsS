@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2462114955474465655}
   - component: {fileID: 9201768451270287459}
+  - component: {fileID: 2506167371456423760}
   m_Layer: 0
   m_Name: CardPrefab
   m_TagString: Untagged
@@ -47,6 +48,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2, y: 0.1, z: 3.3}
   m_Center: {x: 0, y: -1.6792441e-17, z: 0}
+--- !u!114 &2506167371456423760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981629438531938765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ae529766822034cb900b96e9f069ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardData: {fileID: 0}
 --- !u!1 &2984812479739041300
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +699,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7790649928853143013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.05}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 7790649928197715723}
