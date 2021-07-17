@@ -23,7 +23,7 @@ namespace Card.Mechanics
 
         public enum WhoIsTarget
         {
-            CurrentPlayer ,
+            CurrentPlayer,
             Enemy
         };
 

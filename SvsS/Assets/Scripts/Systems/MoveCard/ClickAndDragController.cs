@@ -2,50 +2,56 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.iOS;
-using UnityEngine.Serialization;
 
 namespace Systems.MoveCard
 {
     public class ClickAndDragController : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
-        public float upDistance;
+        private float _upDistance;
+
+        private Camera _camera;
 
         private GameObject _clickedCGameObject;
-        private Vector3 _inputPosition;
 
-        public delegate void CardCondition();
+        public delegate void ElementCondition(GameObject message);
 
-        public event CardCondition CardRelease;
+        public delegate void DragCondition(GameObject message1, Vector3 message2);
+
+        public event DragCondition ElementClick;
+        public event DragCondition ElementDrag;
+        public event ElementCondition ElementRelease;
+
+        private void Start()
+        {
+            _camera = Camera.main;
+        }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            var ray = Camera.main.ScreenPointToRay(eventData.position);
-            Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red);
-            if (Physics.Raycast(Camera.main.transform.position, ray.direction, out var hit))
-            {
-                _inputPosition = new Vector3(hit.point.x, hit.point.y, -upDistance);
-                _clickedCGameObject = hit.collider.gameObject;
-            }
+            var ray = _camera.ScreenPointToRay(eventData.position);
+            Debug.DrawRay(_camera.transform.position, ray.direction, Color.red);
+            if (!Physics.Raycast(_camera.transform.position, ray.direction, out var hit)) return;
+            _clickedCGameObject = hit.collider.gameObject;
+            _upDistance = hit.point.z;
+            ElementClick?.Invoke(_clickedCGameObject, new Vector3(hit.point.x, hit.point.y, _upDistance));
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            var ray = Camera.main.ScreenPointToRay(eventData.position);
-            Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red);
-            if (Physics.Raycast(Camera.main.transform.position, ray.direction, out var hit))
+            var ray = _camera.ScreenPointToRay(eventData.position);
+            Debug.DrawRay(_camera.transform.position, ray.direction, Color.red);
+            if (Physics.Raycast(_camera.transform.position, ray.direction, out var hit))
             {
-                _inputPosition = new Vector3(hit.point.x, hit.point.y, -upDistance);
+                ElementDrag?.Invoke(_clickedCGameObject
+                    
+                    , new Vector3(hit.point.x, hit.point.y, _upDistance));
             }
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            CardRelease?.Invoke();
+            ElementRelease?.Invoke(_clickedCGameObject);
             _clickedCGameObject = null;
         }
-
-        public GameObject ClickObject => _clickedCGameObject;
-
-        public Vector3 InputPosition => _inputPosition;
     }
 }
