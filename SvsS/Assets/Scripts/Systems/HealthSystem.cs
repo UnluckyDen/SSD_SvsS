@@ -10,7 +10,7 @@ namespace Systems
 
         public HealthSystem(int maxHp)
         {
-            this._hpMax = maxHp;
+            _hpMax = maxHp;
             _hp = maxHp;
         }
 
@@ -31,7 +31,7 @@ namespace Systems
             OnHealthChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        public void Heal(int healAmount)
+        public void ApplyHeal(int healAmount)
         {
             _hp += healAmount;
             if (_hp > _hpMax) _hp = _hpMax;

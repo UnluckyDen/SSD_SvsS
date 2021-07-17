@@ -7,6 +7,16 @@ namespace Players
     {
         public int hp;
         public GameObject hpBar;
+        
+        [Space]
+        
+        public int StartMana;
+        public int MaxMana;
+
+        public GameObject ManaView;
+        
+        [Space]
+        
         public GameObject playerModel;
     }
 }

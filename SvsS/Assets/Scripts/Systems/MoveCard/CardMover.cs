@@ -12,50 +12,49 @@ namespace Systems.MoveCard
         void Start()
         {
             _inputController = (ClickAndDragController) FindObjectOfType(typeof(ClickAndDragController));
-            _inputController.CardRelease += CardPlay;
-        }
-
-        void Update()
-        {
-            MoveCard();
+            _inputController.ElementClick += MoveCard;
+            _inputController.ElementDrag += MoveCard;
+            _inputController.ElementRelease += CardPlay;
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        void MoveCard()
+        void MoveCard(GameObject card, Vector3 dragPosition)
         {
-            if (_inputController.ClickObject == null) return;
-            if (_inputController.ClickObject.GetComponent<CardHandler>() != null)
+            if(card == null) return;
+            if (card.GetComponent<CardInfo>() != null)
             {
-                _inputController.ClickObject.transform.position = _inputController.InputPosition;
+                card.transform.position = dragPosition;
             }
         }
 
-        void ResetCardPosition()
+        void ResetCardPosition(GameObject card)
         {
-            //возвращает карту в руку
-            Debug.Log("Pasasi ne raz ne realizoval");
+            card.transform.localPosition = Vector3.zero;
         }
 
-        private void CardPlay()
+        private void CardPlay(GameObject card)
         {
-            var ray = new Ray {origin = _inputController.ClickObject.transform.position, direction = Vector3.forward};
+            if (card == null) return;
+            var ray = new Ray {origin = card.transform.position, direction = Vector3.forward};
             Debug.DrawRay(ray.origin, ray.direction, Color.green);
-            if (!Physics.Raycast(ray.origin, ray.direction, out var hit)) return;
-            if (hit.collider.gameObject.GetComponentInParent<PlayableZone>() != null)
+            if (Physics.Raycast(ray.origin, ray.direction, out var hit) &&
+                hit.collider.gameObject.GetComponentInParent<PlayableZone>() != null)
             {
-                _inputController.ClickObject.transform.position = hit.collider.gameObject.GetComponentInParent<PlayableZone>()
-                    .transform.position;
-                _inputController.ClickObject.transform.SetParent(hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform);
+                card.transform.position =
+                    hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform.position;
+                card.transform.SetParent(hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform);
             }
             else
             {
-                ResetCardPosition();
+                ResetCardPosition(card);
             }
         }
 
         private void OnDestroy()
         {
-            _inputController.CardRelease -= CardPlay;
+            _inputController.ElementClick -= MoveCard;
+            _inputController.ElementDrag -= MoveCard;
+            _inputController.ElementRelease -= CardPlay;
         }
     }
 }
