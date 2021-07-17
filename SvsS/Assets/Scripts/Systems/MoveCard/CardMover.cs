@@ -23,7 +23,8 @@ namespace Systems.MoveCard
             if(card == null) return;
             if (card.GetComponent<CardInfo>() != null)
             {
-                card.transform.position = dragPosition;
+                card.transform.position = dragPosition; //new Vector3(dragPosition.x, dragPosition.y, 0f);
+               // card.transform.localPosition.z = dragPosition.z;
             }
         }
 

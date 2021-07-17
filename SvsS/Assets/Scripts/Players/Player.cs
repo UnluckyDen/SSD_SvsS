@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Systems;
 using UI;
 using UnityEngine;
@@ -7,6 +7,7 @@ namespace Players
 {
     public class Player : MonoBehaviour
     {
+        public bool IsPlayer;
         public PlayerSettingsData PlayerSettings;
         public HealthSystem HealthSystem;
         
@@ -14,9 +15,13 @@ namespace Players
         
         private int _hp;
 
+        //мана игрока в начале каждого раунда
+        public int ManaOnStartOfTurn;
+
         private GameObject _healthBar;
         public HealthBar HpBar;
 
+        public int ManaToGive = 0;
         public Hand.Hand Hand;
         public Deck.Deck Deck;
 
@@ -29,10 +34,10 @@ namespace Players
 
         private void Update()
         {
-            if (HealthSystem.GetHp() != 0) return;
+            /*if (HealthSystem.GetHp() != 0) return;
             //В хп систему событие запихни, которое инвоукится при 0 хп
             Debug.Log("Player died");
-            Destroy(gameObject);
+            Destroy(gameObject);*/
         }
 
         private void CreateHpBar()
