@@ -10,7 +10,6 @@ namespace Systems.MoveCard
         [SerializeField] private Player _ownerOfMoves;
         
         private ClickAndDragController _inputController;
-        private PlayerController _playerController;
 
 
         void Start()
@@ -43,7 +42,7 @@ namespace Systems.MoveCard
             Debug.DrawRay(ray.origin, ray.direction, Color.green);
             if (Physics.Raycast(ray.origin, ray.direction, out var hit) &&
                 hit.collider.gameObject.GetComponentInParent<PlayableZone>() != null &&
-                _playerController.CurrentPlayer.IsPlayer && _playerController.CurrentPlayer.IsAbleToInteract)
+               _ownerOfMoves.IsAbleToInteract)
             {
                 card.transform.position =
                     hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform.position;
