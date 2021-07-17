@@ -7,7 +7,7 @@ namespace Systems.MoveCard
 {
     public class ClickAndDragController : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
-        public float upDistance;
+        private float _upDistance;
 
         private Camera _camera;
 
@@ -32,7 +32,8 @@ namespace Systems.MoveCard
             Debug.DrawRay(_camera.transform.position, ray.direction, Color.red);
             if (!Physics.Raycast(_camera.transform.position, ray.direction, out var hit)) return;
             _clickedCGameObject = hit.collider.gameObject;
-            ElementClick?.Invoke(_clickedCGameObject, new Vector3(hit.point.x, hit.point.y, -upDistance));
+            _upDistance = hit.point.z;
+            ElementClick?.Invoke(_clickedCGameObject, new Vector3(hit.point.x, hit.point.y, _upDistance));
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -43,7 +44,7 @@ namespace Systems.MoveCard
             {
                 ElementDrag?.Invoke(_clickedCGameObject
                     
-                    , new Vector3(hit.point.x, hit.point.y, -upDistance));
+                    , new Vector3(hit.point.x, hit.point.y, _upDistance));
             }
         }
 

@@ -11,6 +11,12 @@ namespace Players.Hand
     {
         public List<GameObject> CardsHolders;
         public GameObject CardHolderPrefab;
+        private Camera _camera;
+
+        private void Start()
+        {
+            _camera = Camera.main;
+        }
 
         void Update()
         {
@@ -27,9 +33,8 @@ namespace Players.Hand
             cardHolder.transform.localRotation = transform.localRotation;
             cardHolder.transform.localScale = gameObject.transform.localScale;
             
-            
             card.gameObject.transform.SetParent(cardHolder.transform);
-            //card.transform.rotation = transform.rotation;
+            card.transform.localEulerAngles = new Vector3(-90,0,0); 
             card.transform.localPosition = cardHolder.transform.position;
             card.transform.localScale = new Vector3(93,93,93);
             
