@@ -15,9 +15,13 @@ namespace Players
         
         private int _hp;
 
+        //мана игрока в начале каждого раунда
+        public int ManaOnStartOfTurn;
+
         private GameObject _healthBar;
         public HealthBar HpBar;
 
+        public int ManaToGive = 0;
         public Hand.Hand Hand;
         public Deck.Deck Deck;
 

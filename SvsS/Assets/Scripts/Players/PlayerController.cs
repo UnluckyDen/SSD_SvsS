@@ -8,14 +8,22 @@ namespace Players
     {
         public List<Player> Players;
         [Range(0, 1)] public int FirstPlayerID; 
-        public Player CurrentPlayer => Players[0];
+        public Player CurrentPlayer => Players[FirstPlayerID];
+
+        public int AddedManaPerTurn;
 
         private CardMover cardMover;
         private ClickAndDragController clickAndDragController;
+
+
+        //количество единиц маны игрока на старте каждого раунда
+        private int currentPlayerMana;
+        
         private void Start()
         {
             cardMover = gameObject.GetComponent<CardMover>();
             clickAndDragController = gameObject.GetComponent<ClickAndDragController>();
+            Players[FirstPlayerID].ManaToGive++;
         }
         public void SwitchActivePlayer()
         {
@@ -49,6 +57,13 @@ namespace Players
                 clickAndDragController.enabled = false;
                 Debug.Log("cardMover enabled is" + cardMover.enabled.ToString() + " " + "cardMover enabled is" + clickAndDragController.enabled.ToString());
             }
+            SwitchTurnManaSetup();
+        }
+        private void SwitchTurnManaSetup()
+        {
+            CurrentPlayer.ManaToGive += AddedManaPerTurn;
+            CurrentPlayer.ManaSystem.SubtractMana(CurrentPlayer.ManaSystem.CurrentMana);
+            CurrentPlayer.ManaSystem.AddMana(CurrentPlayer.ManaToGive);
         }
     }
 }
