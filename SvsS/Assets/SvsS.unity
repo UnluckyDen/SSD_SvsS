@@ -1296,7 +1296,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -1660, y: -310}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &722230885
 GameObject:
@@ -2269,10 +2269,6 @@ GameObject:
   - component: {fileID: 1312674754}
   - component: {fileID: 1312674753}
   - component: {fileID: 1312674752}
-  - component: {fileID: 1312674751}
-  - component: {fileID: 1312674750}
-  - component: {fileID: 1312674749}
-  - component: {fileID: 1312674748}
   m_Layer: 5
   m_Name: EnemyCanvas
   m_TagString: Untagged
@@ -2280,60 +2276,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1312674748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312674747}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662231ac091bdbe4da4dff64ada11dd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Players:
-  - {fileID: 2043255055}
-  - {fileID: 1658252854}
-  FirstPlayerID: 0
-  AddedManaPerTurn: 1
-  AmountOfCardsOnStart: 0
---- !u!114 &1312674749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312674747}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a36aed98af0c9947bbb80c199c2cf5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1312674750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312674747}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7149d14bdf94d4882b5fb326861ed3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1312674751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312674747}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d6641cc82146fb43ab4d12b2e969783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1312674752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2651,7 +2593,6 @@ MonoBehaviour:
   IsPlayer: 0
   IsAbleToInteract: 0
   PlayerSettings: {fileID: 11400000, guid: 31c13d1dce9f01146a8573cf569963a8, type: 2}
-  ManaOnStartOfTurn: 0
   HpBar: {fileID: 0}
   ManaToGive: 0
   Hand: {fileID: 643252726}
@@ -3045,7 +2986,6 @@ MonoBehaviour:
   IsPlayer: 1
   IsAbleToInteract: 0
   PlayerSettings: {fileID: 11400000, guid: 31c13d1dce9f01146a8573cf569963a8, type: 2}
-  ManaOnStartOfTurn: 0
   HpBar: {fileID: 0}
   ManaToGive: 0
   Hand: {fileID: 2858413631363558976}
@@ -3581,9 +3521,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2858413631209787924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf3f0591f4144643b79ea1cb406abb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7077784f984d727459116e0dce29244b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ownerOfMoves: {fileID: 2043255055}
 --- !u!114 &2858413631209787930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3605,10 +3546,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2858413631209787924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7077784f984d727459116e0dce29244b, type: 3}
+  m_Script: {fileID: 11500000, guid: dbf3f0591f4144643b79ea1cb406abb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ownerOfMoves: {fileID: 2043255055}
 --- !u!114 &2858413631209787932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3676,7 +3616,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -1660, y: -310}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2858413631363559038
 MonoBehaviour:
