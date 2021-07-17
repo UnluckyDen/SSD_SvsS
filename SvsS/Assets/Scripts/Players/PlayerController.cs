@@ -12,25 +12,30 @@ namespace Players
 
         public int AddedManaPerTurn;
         public int AmountOfCardsOnStart;
-        private CardMover cardMover;
-        private ClickAndDragController clickAndDragController;
-      
 
-        //количество единиц маны игрока на старте каждого раунда
-        private int currentPlayerMana;
-        
+        private int AmountOfTurns = 0;
+      
         private void Start()
         {
             FirstPlayerSetup();
+            //охуенно я придумал да
+            for (int i = 0; i < Players.Count; i++)
+            {
+                for (int j = 0; j < AmountOfCardsOnStart; j++)
+                {
+                    Players[i].Deck.DrawCard();
+                }
+            }
+            Debug.Log("Current Player is: " + CurrentPlayer.name +
+                ", its activity is" + CurrentPlayer.IsAbleToInteract.ToString());
         }
         private void FirstPlayerSetup()
         {
             Players[FirstPlayerID].ManaToGive++;
             Players[FirstPlayerID].IsAbleToInteract = true;
-            Players[FirstPlayerID].Deck.DrawCard();
         }
         public void SwitchActivePlayer()
-        {
+        { 
             var firstPlayer = Players[FirstPlayerID];
             for (var i = 0; i < Players.Count - 1; i++)
             {
@@ -38,15 +43,23 @@ namespace Players
             }
 
             Players[Players.Count - 1] = firstPlayer;
-            CurrentPlayerActivity();
-            CurrentPlayer.IsAbleToInteract = false;
+            CurrentPlayerActivity();            
+            AmountOfTurns++;
         }
         public void CurrentPlayerActivity()
         {
-            Debug.Log("CurrentPlayerActivity was called");
-            CurrentPlayer.IsAbleToInteract = true;
+            Debug.Log("Current Player is: " + CurrentPlayer.name +
+                ", its activity is" + CurrentPlayer.IsAbleToInteract.ToString());
             SwitchTurnManaSetup();
-            CurrentPlayer.Deck.DrawCard();
+            if (AmountOfTurns > 0)
+            {
+                CurrentPlayer.Deck.DrawCard();
+            }
+            CurrentPlayer.IsAbleToInteract = true;
+            for (int i = 0; i < Players.Count; i++)
+            {
+                Debug.Log(Players[i].name + " " + Players[i].IsAbleToInteract.ToString());
+            }
         }
         private void SwitchTurnManaSetup()
         {

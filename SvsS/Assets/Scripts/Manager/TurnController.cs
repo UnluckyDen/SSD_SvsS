@@ -35,37 +35,30 @@ namespace Manager
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
                 turnManager.SetTrigger(EnemyToEnd);
-                Debug.Log("EnemyToEnd is Activated");
+                //Debug.Log("EnemyToEnd is Activated");
             }
             else if(turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
                 turnManager.SetTrigger(PlayerToEnd);
-                Debug.Log("PlayerToEnd is Activated");
+                //Debug.Log("PlayerToEnd is Activated");
             }
-        }
-
-        public void Update()
-        {
-            //player does not contain playerHealthSystem attribute
-            /*if (player.playerHealthSystem.GetHp() == 0)
-        {
-            turnManager.SetTrigger("PlayerToEnd");
-        }*/
         }
         public void EndTurn()
         {
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
-                turnManager.SetTrigger(PlayerToEnemy);
-                PlayerController.SwitchActivePlayer();
-                Debug.Log("Active player is: " + PlayerController.CurrentPlayer.gameObject.name);
+                EndTurnCode(PlayerToEnemy);             
             }
             else if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
-                turnManager.SetTrigger(EnemyToPlayer);
-                PlayerController.SwitchActivePlayer();
-                Debug.Log("Active player is: " + PlayerController.CurrentPlayer.gameObject.name);
+                EndTurnCode(EnemyToPlayer);
             }
+        }
+        private void EndTurnCode(int triggername)
+        {
+            turnManager.SetTrigger(triggername);
+            PlayerController.CurrentPlayer.IsAbleToInteract = false;
+            PlayerController.SwitchActivePlayer();
         }
         public void OnDestroy()
         {

@@ -43,7 +43,7 @@ namespace Systems.MoveCard
             Debug.DrawRay(ray.origin, ray.direction, Color.green);
             if (Physics.Raycast(ray.origin, ray.direction, out var hit) &&
                 hit.collider.gameObject.GetComponentInParent<PlayableZone>() != null &&
-                _playerController.CurrentPlayer.IsAbleToInteract)
+                _playerController.CurrentPlayer.IsPlayer && _playerController.CurrentPlayer.IsAbleToInteract)
             {
                 card.transform.position =
                     hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform.position;
