@@ -8,8 +8,8 @@ namespace Systems
     {
         public event EventHandler OnHealthChanged;
 
-        public delegate void DeathCallback(Player player);
-        public DeathCallback OnDied;
+        public delegate void DeathCallback();
+        public event DeathCallback OnDied;
 
         private int _hp;
         private readonly int _hpMax;
@@ -39,7 +39,7 @@ namespace Systems
             }
             if (_hp == 0)
             {
-                Debug.Log("OnDied is invoked");
+                OnDied?.Invoke();
             }
             OnHealthChanged?.Invoke(this, EventArgs.Empty);
         }
