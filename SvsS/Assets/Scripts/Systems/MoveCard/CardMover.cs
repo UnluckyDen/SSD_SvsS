@@ -14,7 +14,7 @@ namespace Systems.MoveCard
 
         void Start()
         {
-            _inputController = (ClickAndDragController) FindObjectOfType(typeof(ClickAndDragController));
+            _inputController = GetComponent<ClickAndDragController>();
             _inputController.ElementClick += MoveCard;
             _inputController.ElementDrag += MoveCard;
             _inputController.ElementRelease += CardPlay;

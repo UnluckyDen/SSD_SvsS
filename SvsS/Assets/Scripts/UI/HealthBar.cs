@@ -1,23 +1,25 @@
 using System;
 using Systems;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
     public class HealthBar : MonoBehaviour
     {
         private HealthSystem _healthSystem;
-        private Transform _bar;
+        [SerializeField] private Image _bar;
         
-        public void Setup(HealthSystem healthSystem)
+        private void Start()
         {
-            _healthSystem = healthSystem;
-            _bar = transform.Find("Bar");
-            healthSystem.OnHealthChanged += HealthSystemOnHealthChanged;
+            _healthSystem = GetComponentInParent<HealthSystem>();
+            _healthSystem.OnHealthChanged += HealthSystemOnHealthChanged;
+      
         }
-        private void HealthSystemOnHealthChanged(object sender, System.EventArgs e)
+  
+        private void HealthSystemOnHealthChanged(float hpPercent)
         {
-            _bar.localScale = new Vector3(_healthSystem.GetHpPercent(), 1);
+            _bar.fillAmount = _healthSystem.GetHpPercent();
         }
 
         private void OnDestroy()
