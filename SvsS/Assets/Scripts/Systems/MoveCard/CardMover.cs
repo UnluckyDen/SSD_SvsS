@@ -7,13 +7,14 @@ namespace Systems.MoveCard
 {
     public class CardMover : MonoBehaviour
     {
+        [SerializeField] private Player _ownerOfMoves;
+        
         private ClickAndDragController _inputController;
-
         private PlayerController _playerController;
+
 
         void Start()
         {
-            _playerController = gameObject.GetComponent<PlayerController>();
             _inputController = (ClickAndDragController) FindObjectOfType(typeof(ClickAndDragController));
             _inputController.ElementClick += MoveCard;
             _inputController.ElementDrag += MoveCard;
@@ -24,15 +25,14 @@ namespace Systems.MoveCard
         void MoveCard(GameObject card, Vector3 dragPosition)
         {
             if(card == null) return;
-            if (card.GetComponent<CardInfo>() != null)
-            {
-                card.transform.position = dragPosition; //new Vector3(dragPosition.x, dragPosition.y, 0f);
-               // card.transform.localPosition.z = dragPosition.z;              
-            }
+            if (card.GetComponent<CardInfo>() == null) return;
+            card.transform.position = dragPosition;
+            card.transform.SetParent(gameObject.transform);
         }
 
         void ResetCardPosition(GameObject card)
         {
+            _ownerOfMoves.Hand.AddCardToHand(card.GetComponent<CardInfo>());
             card.transform.localPosition = Vector3.zero;
         }
 
@@ -47,11 +47,11 @@ namespace Systems.MoveCard
             {
                 card.transform.position =
                     hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform.position;
-                card.transform.SetParent(hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform);                
+                card.transform.SetParent(hit.collider.gameObject.GetComponentInParent<PlayableZone>().transform);
             }
             else
             {
-                ResetCardPosition(card);           
+                ResetCardPosition(card);
             }
         }
 

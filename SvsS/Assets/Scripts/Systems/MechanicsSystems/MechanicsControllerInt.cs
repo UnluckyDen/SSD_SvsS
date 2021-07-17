@@ -45,10 +45,6 @@ namespace Systems.MechanicsSystems
             {
                 _mechanics.Add(addHeal);
             }
-            foreach (var drawCard in message.drawCards)
-            {
-                _mechanics.Add(drawCard);
-            }
             foreach (var changeMana in message.changeMana)
             {
                 _mechanics.Add(changeMana);
@@ -56,6 +52,10 @@ namespace Systems.MechanicsSystems
             foreach (var dropCard in message.dropCards)
             {
                 _mechanics.Add(dropCard);
+            }
+            foreach (var drawCard in message.drawCards)
+            {
+                _mechanics.Add(drawCard);
             }
             ApplyMechanics(_mechanics);
         }
