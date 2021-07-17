@@ -12,11 +12,14 @@ namespace Card.Data
         public int manaCost;
         public Sprite sprite;
         public GameObject cardPrefab;
-        public List<ParticleSystem> ParticleSystems;
 
         [Header("Card mechanics")] public List<AddDamage> addDamages;
         public List<AddHeal> addHeals;
+        public List<ChangeMana> changeMana;
+        public List<DrawCard> drawCards;
+        public List<DropCard> dropCards;
         public List<GetCard> getCards;
+
 
         public List<TestMechanic> testsMechanics;
     }

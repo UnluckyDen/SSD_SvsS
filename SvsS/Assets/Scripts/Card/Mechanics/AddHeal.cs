@@ -13,7 +13,7 @@ namespace Card.Mechanics
 
         public void DoMechanic(int value, Player player)
         {
-            player.HealthSystem.Heal(value);
+            player.HealthSystem.ApplyHeal(value);
         }
 
         public int GetValue()

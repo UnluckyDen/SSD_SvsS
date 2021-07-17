@@ -8,10 +8,13 @@ using UnityEngine;
 
 namespace Players.Deck
 {
+    [RequireComponent(typeof(CardCreator))]
     public class Deck : MonoBehaviour
     {
         public Player DeckOwner;
         private CardCreator _cardCreator;
+
+        public CardCreator CardCreator => _cardCreator;
 
         public bool ShuffleOnStart;
         [SerializeField] private List<CardData> _cardDatas;
