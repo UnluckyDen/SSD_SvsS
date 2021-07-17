@@ -11,20 +11,23 @@ namespace Players
         public Player CurrentPlayer => Players[FirstPlayerID];
 
         public int AddedManaPerTurn;
-
+        public int AmountOfCardsOnStart;
         private CardMover cardMover;
         private ClickAndDragController clickAndDragController;
-
+      
 
         //количество единиц маны игрока на старте каждого раунда
         private int currentPlayerMana;
         
         private void Start()
         {
-            cardMover = gameObject.GetComponent<CardMover>();
-            clickAndDragController = gameObject.GetComponent<ClickAndDragController>();
+            FirstPlayerSetup();
+        }
+        private void FirstPlayerSetup()
+        {
             Players[FirstPlayerID].ManaToGive++;
             Players[FirstPlayerID].IsAbleToInteract = true;
+            Players[FirstPlayerID].Deck.DrawCard();
         }
         public void SwitchActivePlayer()
         {
