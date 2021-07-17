@@ -1,23 +1,54 @@
 using System.Collections.Generic;
+using Systems.MoveCard;
 using UnityEngine;
 
 namespace Players
 {
-    class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         public List<Player> Players;
-
+        [Range(0, 1)] public int FirstPlayerID; 
         public Player CurrentPlayer => Players[0];
 
+        private CardMover cardMover;
+        private ClickAndDragController clickAndDragController;
+        private void Start()
+        {
+            cardMover = gameObject.GetComponent<CardMover>();
+            clickAndDragController = gameObject.GetComponent<ClickAndDragController>();
+        }
         public void SwitchActivePlayer()
         {
-            var firstPlayer = Players[0];
+            var firstPlayer = Players[FirstPlayerID];
             for (var i = 0; i < Players.Count - 1; i++)
             {
                 Players[i] = Players[i + 1];
             }
 
             Players[Players.Count - 1] = firstPlayer;
+            CurrentPlayerActivity();
+        }
+        public void CurrentPlayerActivity()
+        {
+            Debug.Log("CurrentPlayerActivity was called");
+
+            if(CurrentPlayer.IsPlayer)
+            {
+                Debug.Log("first if was reached");
+                if (cardMover.enabled == false && clickAndDragController.enabled == false)
+                {
+                    cardMover.enabled = true;
+                    clickAndDragController.enabled = true;
+                    Debug.Log("cardMover enabled is" + cardMover.enabled.ToString() + " " + "cardMover enabled is" + clickAndDragController.enabled.ToString());
+                }
+            }
+            else if(!CurrentPlayer.IsPlayer)
+            {
+                Debug.Log("second if was reached");
+                cardMover.enabled = false;
+                clickAndDragController.enabled = false;
+                Debug.Log("cardMover enabled is" + cardMover.enabled.ToString() + " " + "cardMover enabled is" + clickAndDragController.enabled.ToString());
+            }
         }
     }
 }

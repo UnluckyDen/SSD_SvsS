@@ -7,6 +7,7 @@ namespace Players
 {
     public class Player : MonoBehaviour
     {
+        public bool IsPlayer;
         public PlayerSettingsData PlayerSettings;
         public HealthSystem HealthSystem;
         
@@ -29,10 +30,10 @@ namespace Players
 
         private void Update()
         {
-            if (HealthSystem.GetHp() != 0) return;
+            /*if (HealthSystem.GetHp() != 0) return;
             //В хп систему событие запихни, которое инвоукится при 0 хп
             Debug.Log("Player died");
-            Destroy(gameObject);
+            Destroy(gameObject);*/
         }
 
         private void CreateHpBar()

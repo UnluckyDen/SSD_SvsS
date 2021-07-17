@@ -18,7 +18,7 @@ namespace Systems.MechanicsSystems
 
         private void Start()
         {
-            _playableZone = GetComponentInChildren<PlayableZone>();
+            _playableZone = FindObjectOfType<PlayableZone>();
             _playableZone.CardIsPlayed += ApplyMessage;
             _playerController = FindObjectOfType<PlayerController>();
             _players = _playerController.Players;

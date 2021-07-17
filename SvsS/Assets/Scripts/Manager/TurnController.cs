@@ -7,8 +7,8 @@ namespace Manager
     public class TurnController : MonoBehaviour
     {
         public Animator turnManager;
-        public List<Player> players;
-        public bool IsPlayerFirst;
+        private List<Player> players;
+        public PlayerController PlayerController;
         private static readonly int PlayerFirst = Animator.StringToHash("PlayerFirst");
         private static readonly int EnemyFirst = Animator.StringToHash("EnemyFirst");
         private static readonly int PlayerToEnemy = Animator.StringToHash("PlayerToEnemy");
@@ -18,20 +18,15 @@ namespace Manager
 
         private int currentState;
         public void Start()
-        {
-            if (IsPlayerFirst == true)
-            {
+        {   
+            if(PlayerController.FirstPlayerID == 0)
                 turnManager.SetTrigger(PlayerFirst);
-                currentState = GetCurrentState();
-            }
             else
-            {
-                turnManager.SetTrigger(EnemyFirst);
-                currentState = GetCurrentState();
-            }
+                turnManager.SetTrigger(PlayerFirst);
+
             for (int i = 0; i < players.Count; i++)
             {
-                players[i].HealthSystem.OnDied += HealthSystem_OnDied;
+                PlayerController.Players[i].HealthSystem.OnDied += HealthSystem_OnDied;
             }
         }
         private void HealthSystem_OnDied(Player player)
@@ -62,17 +57,21 @@ namespace Manager
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
                 turnManager.SetTrigger(PlayerToEnemy);
+                PlayerController.SwitchActivePlayer();
+                Debug.Log("Active player is: " + PlayerController.CurrentPlayer.gameObject.name);
             }
             else if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
                 turnManager.SetTrigger(EnemyToPlayer);
+                PlayerController.SwitchActivePlayer();
+                Debug.Log("Active player is: " + PlayerController.CurrentPlayer.gameObject.name);
             }
         }
         public void OnDestroy()
         {
             for (int i = 0; i < players.Count; i++)
             {
-                players[i].HealthSystem.OnDied -= HealthSystem_OnDied;
+                PlayerController.Players[i].HealthSystem.OnDied -= HealthSystem_OnDied;
             }
         }
         public int GetCurrentState()
