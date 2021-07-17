@@ -12,5 +12,5 @@ namespace Card
             get => cardData;
             set => cardData = value;
         }
-    }
+    }  
 }

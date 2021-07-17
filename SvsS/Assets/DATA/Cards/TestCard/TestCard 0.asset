@@ -24,10 +24,7 @@ MonoBehaviour:
   addHeals:
   - _value: 50
     target: 0
-  changeMana:
-  - _addMana: 10
-    _subtractMana: 0
-    target: 0
+  changeMana: []
   drawCards:
   - _value: 0
     target: 0
