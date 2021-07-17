@@ -27,6 +27,7 @@ namespace Players.Hand
 
         public void AddCardToHand(CardInfo card)
         {
+            if (card == null) return;
             var cardHolder = Instantiate(CardHolderPrefab, Vector3.zero, Quaternion.identity);
 
             cardHolder.transform.SetParent(gameObject.transform);
