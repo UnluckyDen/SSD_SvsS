@@ -27,6 +27,7 @@ namespace Players.Hand
 
         public void AddCardToHand(CardInfo card)
         {
+            if (card == null) return;
             var cardHolder = Instantiate(CardHolderPrefab, Vector3.zero, Quaternion.identity);
 
             cardHolder.transform.SetParent(gameObject.transform);
@@ -43,19 +44,20 @@ namespace Players.Hand
             _cardHolders.Add(cardHolder);
         }
 
-        public void DropCard()
+        public void DropRandomCard()
         {
             if (_cardHolders.Count == 0) return;
             var number = Random.Range(0, _cardHolders.Count - 1);
             var cardInfo = _cardHolders[number].GetComponentInChildren<CardInfo>();
             _cardHolders.Remove(_cardHolders[number]);
+            if(cardInfo == null) return;
             Destroy(cardInfo.gameObject);
         }
 
         private void CardInHandController()
         {
             foreach (var cardsHolder in _cardHolders.Where(cardsHolder =>
-                cardsHolder.GetComponentInChildren<CardInfo>() == null))
+                cardsHolder == null))
             {
                 _cardHolders.Remove(cardsHolder);
                 break;

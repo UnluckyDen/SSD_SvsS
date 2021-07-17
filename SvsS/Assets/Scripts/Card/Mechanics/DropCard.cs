@@ -15,7 +15,7 @@ namespace Card.Mechanics
         {
             for (int i = 0; i < value; i++)
             { 
-                player.Hand.DropCard();
+                player.Hand.DropRandomCard();
             }
         }
 

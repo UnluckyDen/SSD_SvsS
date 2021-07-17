@@ -37,7 +37,7 @@ namespace Systems
             {
                 _playerController.CurrentPlayer.ManaSystem.SubtractMana(_card.Data.manaCost);
                 CardIsPlayed?.Invoke(_card.Data);
-                
+
                 Destroy(_card.gameObject);
             }
             else

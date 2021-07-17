@@ -1,6 +1,5 @@
 using Card.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Card
 {
@@ -13,5 +12,5 @@ namespace Card
             get => cardData;
             set => cardData = value;
         }
-    }
+    }  
 }

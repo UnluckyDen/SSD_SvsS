@@ -15,7 +15,7 @@ namespace Systems
 
         private int _maxMana;
         private int _startMana;
-        private int _currentMana = 0;
+        private int _currentMana;
 
         private Player _player;
 
@@ -24,7 +24,10 @@ namespace Systems
             _player = GetComponentInParent<Player>();
             _maxMana = _player.PlayerSettings.MaxMana;
             _startMana = _player.PlayerSettings.StartMana;
-            AddMana(_startMana); //помесить в турн контроллер и вызывать в начале каждого хода
+        }
+        private void Start()
+        {
+            _currentMana = _startMana;            
         }
 
         public void AddMana(int value)

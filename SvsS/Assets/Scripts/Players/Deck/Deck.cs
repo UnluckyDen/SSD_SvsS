@@ -11,19 +11,27 @@ namespace Players.Deck
     [RequireComponent(typeof(CardCreator))]
     public class Deck : MonoBehaviour
     {
+        public delegate void DeckCondition();
+
+        public event DeckCondition CardCountChanged;
         public Player DeckOwner;
+        public CardCreator CardCreator => _cardCreator;
+        public int CardCount => _cardCount;
+
+        [SerializeField] private bool ShuffleOnStart;
+        [SerializeField] private List<CardData> _cardDatas;
+        
+        private int _cardCount;
         private CardCreator _cardCreator;
 
-        public CardCreator CardCreator => _cardCreator;
-
-        public bool ShuffleOnStart;
-        [SerializeField] private List<CardData> _cardDatas;
+        
 
 
-        private void Start()
+        private void Awake()
         {
             if (ShuffleOnStart) ShuffleDeck();
             _cardCreator = GetComponent<CardCreator>();
+            _cardCount = _cardDatas.Count;
         }
 
 
@@ -39,6 +47,8 @@ namespace Players.Deck
             var card = _cardCreator.CreateCard(_cardDatas[0]);
             DeckOwner.Hand.AddCardToHand(card.GetComponent<CardInfo>());
             _cardDatas.Remove(_cardDatas[0]);
+            _cardCount = _cardDatas.Count;
+            CardCountChanged?.Invoke();
         }
     }
 }
