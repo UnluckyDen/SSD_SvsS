@@ -6,15 +6,16 @@ namespace SceneManager
 {
     public class LevelManager : MonoBehaviour
     {
-        private void Start()
+        private void Awake()
         {
-            LevelManager.DontDestroyOnLoad(gameObject);
-            
+            if (FindObjectsOfType<LevelManager>().Length > 1)
+                Destroy(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
 
         public void LoadLevel(int levelIndex)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneBuildIndex: 1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneBuildIndex: levelIndex);
         }
     }
 }

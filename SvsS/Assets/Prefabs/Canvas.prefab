@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 6408269307999707199}
   - component: {fileID: 6408269307999707198}
   - component: {fileID: 6408269307999707193}
+  - component: {fileID: 5591155707674375457}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -729,7 +730,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6408269307999707198}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5591155707674375457}
+        m_TargetAssemblyTypeName: SceneManager.BackButton, Assembly-CSharp
+        m_MethodName: BackToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5591155707674375457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408269307999707195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2817db074ab25da4db8475acda658404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6408269308375283504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,7 +1430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c8b656fcf37344b8fa0883401226ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardsHolders: []
   CardHolderPrefab: {fileID: 1116067494005297781, guid: c3c712b22a08ffc4eadf7a631cb1fca0, type: 3}
 --- !u!1 &6408269309251390822
 GameObject:
@@ -1564,8 +1588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7149d14bdf94d4882b5fb326861ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
-  _cardData: {fileID: 0}
 --- !u!114 &4271003952659171395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,8 +1600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a36aed98af0c9947bbb80c199c2cf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
-  _cardData: {fileID: 0}
 --- !u!114 &6408269309251390830
 MonoBehaviour:
   m_ObjectHideFlags: 0
