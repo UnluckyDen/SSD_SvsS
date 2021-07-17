@@ -626,6 +626,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6408269307415731298, guid: f70ad17595774ef49a43aa0ba2761903, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 2039228518}
     - target: {fileID: 6408269309035178027, guid: f70ad17595774ef49a43aa0ba2761903, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 468.0004
@@ -3243,6 +3247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a32d41b6d6304a4f8f1d85b188b9e80, type: 3}
+--- !u!1 &2039228518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6408269309251390822, guid: f70ad17595774ef49a43aa0ba2761903, type: 3}
+  m_PrefabInstance: {fileID: 224208675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2043255054
 GameObject:
   m_ObjectHideFlags: 0
