@@ -1,6 +1,4 @@
 ﻿using System;
-using Systems;
-using Card.Data;
 using Interfaces;
 using Players;
 using UnityEngine;
@@ -8,18 +6,20 @@ using UnityEngine;
 namespace Card.Mechanics
 {
     [System.Serializable]
-    public class GetCard : IMechanic<CardData>
+    public class DrawCard : IMechanic<int>
 
     {
-        [SerializeField] private CardData _value;
+        [SerializeField] private int _value;
 
-        public void DoMechanic(CardData value, Player player)
+        public void DoMechanic(int value, Player player)
         {
-            var card = player.Deck.CardCreator.CreateCard(value);
-            player.Hand.AddCardToHand(card.GetComponent<CardInfo>());
+            for (int i = 0; i < value; i++)
+            { 
+                player.Deck.DrawCard();
+            }
         }
 
-        public CardData GetValue()
+        public int GetValue()
         {
             return _value;
         }

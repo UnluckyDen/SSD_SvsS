@@ -14,6 +14,8 @@ namespace Players.Deck
         public Player DeckOwner;
         private CardCreator _cardCreator;
 
+        public CardCreator CardCreator => _cardCreator;
+
         public bool ShuffleOnStart;
         [SerializeField] private List<CardData> _cardDatas;
 

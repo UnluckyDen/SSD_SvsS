@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Card.Data;
 using Interfaces;
 using JetBrains.Annotations;
@@ -10,20 +11,17 @@ namespace Systems.MechanicsSystems
 {
     public class MechanicsControllerCard : MonoBehaviour
     {
-        public List<Player> players;
+        private List<Player> _players;
+        private PlayerController _playerController;
+        private PlayableZone _playableZone;
         private readonly List<IMechanic<CardData>> _mechanics = new List<IMechanic<CardData>>();
-        public CardData _cardData;
 
         private void Start()
         {
-            //_mechanics.Add(mechanic  = (IMechanic<T>) _cardData._cardMechanicsList);
-            //_mechanics.Add((IMechanic<T>) _cardData.addDamages[0]);
-            foreach (var testMechanic in _cardData.testsMechanics)
-            {
-                _mechanics.Add(testMechanic as IMechanic<CardData>);
-            }
-
-            ApplyMechanics(_mechanics);
+            _playableZone = GetComponentInChildren<PlayableZone>();
+            _playableZone.CardIsPlayed += ApplyMessage;
+            _playerController = FindObjectOfType<PlayerController>();
+            _players = _playerController.Players;
         }
 
         private void ApplyMechanics([NotNull] List<IMechanic<CardData>> mechanics)
@@ -32,13 +30,23 @@ namespace Systems.MechanicsSystems
 
             foreach (var mechanic in mechanics)
             {
-                mechanic.DoMechanic(mechanic.GetValue(), players[mechanic.GetTarget()]);
+                mechanic.DoMechanic(mechanic.GetValue(), _players[mechanic.GetTarget()]);
             }
+            _mechanics.Clear();
+        }
+        
+        private void ApplyMessage(CardData message)
+        {
+            foreach (var getCard in message.getCards)
+            {
+                _mechanics.Add(getCard);
+            }
+            ApplyMechanics(_mechanics);
+        }
 
-            /*
- * у нас будет событие, которым мы подпишемся на выход карты. генератор событий будет на столе.
- * получив данные карты, мы будем вызывать метод DoMechanic со значениями, которые внутри карты.
- */
+        private void OnDestroy()
+        {
+            _playableZone.CardIsPlayed -= ApplyMessage;
         }
     }
 }

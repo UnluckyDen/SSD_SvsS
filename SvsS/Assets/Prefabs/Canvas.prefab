@@ -1422,6 +1422,8 @@ GameObject:
   - component: {fileID: 6408269309251390825}
   - component: {fileID: 6408269309251390827}
   - component: {fileID: 6408269309251390824}
+  - component: {fileID: 7790836881174576608}
+  - component: {fileID: 4271003952659171395}
   - component: {fileID: 6408269309251390830}
   m_Layer: 5
   m_Name: Canvas
@@ -1550,6 +1552,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6641cc82146fb43ab4d12b2e969783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7790836881174576608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408269309251390822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7149d14bdf94d4882b5fb326861ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  _cardData: {fileID: 0}
+--- !u!114 &4271003952659171395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408269309251390822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a36aed98af0c9947bbb80c199c2cf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  _cardData: {fileID: 0}
 --- !u!114 &6408269309251390830
 MonoBehaviour:
   m_ObjectHideFlags: 0
