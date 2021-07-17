@@ -42,19 +42,19 @@ namespace Players
 
             if(CurrentPlayer.IsPlayer)
             {
-                Debug.Log("first if was reached");
-                if (cardMover.enabled == false && clickAndDragController.enabled == false)
+                //Debug.Log("first if was reached");
+                /*if (cardMover.enabled == false && clickAndDragController.enabled == false)
                 {
                     cardMover.enabled = true;
                     clickAndDragController.enabled = true;
                     Debug.Log("cardMover enabled is" + cardMover.enabled.ToString() + " " + "cardMover enabled is" + clickAndDragController.enabled.ToString());
-                }
+                }*/
             }
             else if(!CurrentPlayer.IsPlayer)
             {
-                Debug.Log("second if was reached");
-                cardMover.enabled = false;
-                clickAndDragController.enabled = false;
+                //Debug.Log("second if was reached");
+                /*cardMover.enabled = false;
+                clickAndDragController.enabled = false;*/
                 Debug.Log("cardMover enabled is" + cardMover.enabled.ToString() + " " + "cardMover enabled is" + clickAndDragController.enabled.ToString());
             }
             SwitchTurnManaSetup();
