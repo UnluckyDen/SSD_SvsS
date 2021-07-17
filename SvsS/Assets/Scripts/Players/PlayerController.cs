@@ -18,6 +18,7 @@ namespace Players
         private void Start()
         {
             FirstPlayerSetup();
+            //охуенно я придумал да
             for (int i = 0; i < Players.Count; i++)
             {
                 for (int j = 0; j < AmountOfCardsOnStart; j++)
