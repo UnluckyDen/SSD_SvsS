@@ -8,6 +8,7 @@ namespace Players
     public class Player : MonoBehaviour
     {
         public bool IsPlayer;
+        public bool IsAbleToInteract = false;
         public PlayerSettingsData PlayerSettings;
         public HealthSystem HealthSystem;
         

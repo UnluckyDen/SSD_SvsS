@@ -24,6 +24,7 @@ namespace Players
             cardMover = gameObject.GetComponent<CardMover>();
             clickAndDragController = gameObject.GetComponent<ClickAndDragController>();
             Players[FirstPlayerID].ManaToGive++;
+            Players[FirstPlayerID].IsAbleToInteract = true;
         }
         public void SwitchActivePlayer()
         {
@@ -35,10 +36,12 @@ namespace Players
 
             Players[Players.Count - 1] = firstPlayer;
             CurrentPlayerActivity();
+            CurrentPlayer.IsAbleToInteract = false;
         }
         public void CurrentPlayerActivity()
         {
             Debug.Log("CurrentPlayerActivity was called");
+            CurrentPlayer.IsAbleToInteract = true;
 
             if(CurrentPlayer.IsPlayer)
             {
@@ -58,6 +61,7 @@ namespace Players
                 Debug.Log("cardMover enabled is" + cardMover.enabled.ToString() + " " + "cardMover enabled is" + clickAndDragController.enabled.ToString());
             }
             SwitchTurnManaSetup();
+            CurrentPlayer.Deck.DrawCard();
         }
         private void SwitchTurnManaSetup()
         {

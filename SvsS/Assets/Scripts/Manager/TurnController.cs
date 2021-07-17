@@ -22,7 +22,7 @@ namespace Manager
             if(PlayerController.FirstPlayerID == 0)
                 turnManager.SetTrigger(PlayerFirst);
             else
-                turnManager.SetTrigger(PlayerFirst);
+                turnManager.SetTrigger(EnemyFirst);
 
             for (int i = 0; i < players.Count; i++)
             {

@@ -2627,6 +2627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPlayer: 0
+  IsAbleToInteract: 0
   PlayerSettings: {fileID: 11400000, guid: 31c13d1dce9f01146a8573cf569963a8, type: 2}
   ManaOnStartOfTurn: 0
   HpBar: {fileID: 0}
@@ -3020,6 +3021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPlayer: 1
+  IsAbleToInteract: 0
   PlayerSettings: {fileID: 11400000, guid: 31c13d1dce9f01146a8573cf569963a8, type: 2}
   ManaOnStartOfTurn: 0
   HpBar: {fileID: 0}
@@ -3451,12 +3453,12 @@ GameObject:
   - component: {fileID: 2858413631209787927}
   - component: {fileID: 2858413631209787926}
   - component: {fileID: 2858413631209787925}
-  - component: {fileID: 2858413631209787931}
-  - component: {fileID: 2858413631209787929}
   - component: {fileID: 2858413631209787930}
   - component: {fileID: 1394710896713884306}
   - component: {fileID: 4899979621717071665}
   - component: {fileID: 2858413631209787932}
+  - component: {fileID: 2858413631209787931}
+  - component: {fileID: 2858413631209787929}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3557,7 +3559,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2858413631209787924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7077784f984d727459116e0dce29244b, type: 3}
+  m_Script: {fileID: 11500000, guid: dbf3f0591f4144643b79ea1cb406abb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2858413631209787930
@@ -3581,7 +3583,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2858413631209787924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf3f0591f4144643b79ea1cb406abb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7077784f984d727459116e0dce29244b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2858413631209787932
