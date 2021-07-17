@@ -1099,6 +1099,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a62eda0623b4a5348bd043ff9cff7728, type: 2}
   - {fileID: 11400000, guid: 511e5b1e53f82414a881dbf30b27dc8c, type: 2}
   - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
 --- !u!4 &398132894
 Transform:
   m_ObjectHideFlags: 0
@@ -1160,6 +1170,16 @@ MonoBehaviour:
   _cardDatas:
   - {fileID: 11400000, guid: a62eda0623b4a5348bd043ff9cff7728, type: 2}
   - {fileID: 11400000, guid: 511e5b1e53f82414a881dbf30b27dc8c, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
+  - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
   - {fileID: 11400000, guid: 86198bce5f309714ebe355f2792e671a, type: 2}
 --- !u!4 &453534691
 Transform:
@@ -2277,6 +2297,7 @@ MonoBehaviour:
   - {fileID: 1658252854}
   FirstPlayerID: 0
   AddedManaPerTurn: 1
+  AmountOfCardsOnStart: 0
 --- !u!114 &1312674749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3603,6 +3624,7 @@ MonoBehaviour:
   - {fileID: 1658252854}
   FirstPlayerID: 0
   AddedManaPerTurn: 1
+  AmountOfCardsOnStart: 3
 --- !u!114 &2858413631363558976
 MonoBehaviour:
   m_ObjectHideFlags: 0
