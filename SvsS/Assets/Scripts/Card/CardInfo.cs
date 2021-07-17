@@ -1,6 +1,5 @@
 using Card.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Card
 {

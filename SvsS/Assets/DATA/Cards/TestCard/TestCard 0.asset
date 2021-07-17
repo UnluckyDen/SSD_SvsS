@@ -29,10 +29,10 @@ MonoBehaviour:
     _subtractMana: 0
     target: 0
   drawCards:
-  - _value: 1
+  - _value: 0
     target: 0
   dropCards:
-  - _value: 3
+  - _value: 1
     target: 0
   getCards: []
   testsMechanics:
