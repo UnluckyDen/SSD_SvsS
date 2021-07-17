@@ -18,8 +18,10 @@ MonoBehaviour:
   manaCost: 0
   sprite: {fileID: 21300000, guid: 372ab8aaab89a0f4f93198fdc7b45ca3, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
-  ParticleSystems: []
   addDamages: []
   addHeals: []
+  changeMana: []
+  drawCards: []
+  dropCards: []
   getCards: []
   testsMechanics: []

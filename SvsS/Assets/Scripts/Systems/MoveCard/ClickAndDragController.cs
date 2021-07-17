@@ -34,7 +34,6 @@ namespace Systems.MoveCard
             _clickedCGameObject = hit.collider.gameObject;
             _upDistance = hit.point.z;
             ElementClick?.Invoke(_clickedCGameObject, new Vector3(hit.point.x, hit.point.y, _upDistance));
-            //Debug.Log("OnPointerDown");
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -47,14 +46,12 @@ namespace Systems.MoveCard
                     
                     , new Vector3(hit.point.x, hit.point.y, _upDistance));
             }
-            //Debug.Log("OnDrag");
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             ElementRelease?.Invoke(_clickedCGameObject);
             _clickedCGameObject = null;
-            //Debug.Log("OnPointerUp");
         }
     }
 }
