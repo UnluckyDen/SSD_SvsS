@@ -1,7 +1,8 @@
 using Players;
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.Serialization;
+using static Systems.HealthSystem;
 
 namespace Manager
 {
@@ -20,6 +21,11 @@ namespace Manager
 
         public event TurnChanged OnTurnChanged;
 
+        private IEnumerator _coroutine;
+
+        public GameObject _winPanel;
+        public GameObject _losePanel;
+
         public void Start()
         {
             _playerController = FindObjectOfType<PlayerController>();
@@ -30,22 +36,46 @@ namespace Manager
                 player.HealthSystem.OnDied += HealthSystem_OnDied;
             }
         }
-        private void HealthSystem_OnDied()
+        private void HealthSystem_OnDied(Player player)
         {
-            Debug.Log("OnDied event is happened");
+            Debug.Log("OnDied event is happened" + player.name);
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
                 turnManager.SetTrigger(EnemyToEnd);
-                //Debug.Log("EnemyToEnd is Activated");
+                _coroutine = SceneFinal(2, player);
+                StartCoroutine(_coroutine);
             }
             else if(turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
                 turnManager.SetTrigger(PlayerToEnd);
-                //Debug.Log("PlayerToEnd is Activated");
+                _coroutine = SceneFinal(2, player);
+                StartCoroutine(_coroutine);
+            }            
+        }
+        private IEnumerator SceneFinal(int time, Player player)
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(time);
+                if (turnManager.GetCurrentAnimatorStateInfo(0).IsTag("End"))
+                {
+                    if (player.IsPlayer)
+                    {
+                        _playerController.gameObject.SetActive(false);
+                        _losePanel.SetActive(true);                        
+                    }
+                    else
+                    {
+                        _playerController.gameObject.SetActive(false);
+                        _winPanel.SetActive(true);
+                    }
+                }
+                
             }
         }
         public void EndTurn()
         {
+
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
                 EndTurnCode(PlayerToEnemy);
