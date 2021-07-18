@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0410\u0442\u0449\u0438\u0441\u043B\u0435\u043D!"
   description: 
-  manaCost: 0
+  manaCost: 10
   sprite: {fileID: 21300000, guid: c6b95098f3b0489488df52befaec00a5, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
-  addDamages: []
+  addDamages:
+  - _value: 100
+    target: 0
   addHeals: []
   changeMana: []
   drawCards: []
