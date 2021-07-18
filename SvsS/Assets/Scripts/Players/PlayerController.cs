@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Systems.MoveCard;
 using UnityEngine;
+using UI;
 
 namespace Players
 {
@@ -14,7 +15,10 @@ namespace Players
         public int AmountOfCardsOnStart;
 
         private int AmountOfTurns = 0;
-      
+
+        public GameObject YourTurnView;
+        public GameObject EnemyTurnView;
+        
         private void Start()
         {
             FirstPlayerSetup();
@@ -31,6 +35,11 @@ namespace Players
         {
             Players[FirstPlayerID].ManaToGive++;
             Players[FirstPlayerID].IsAbleToInteract = true;
+            if(Players[FirstPlayerID].IsPlayer)
+            {
+                YourTurnView.SetActive(true);
+                EnemyTurnView.SetActive(false);
+            }
         }
         public void SwitchActivePlayer()
         { 
@@ -53,6 +62,18 @@ namespace Players
                 CurrentPlayer.Deck.DrawCard();
             }
             CurrentPlayer.IsAbleToInteract = true;
+            if(CurrentPlayer.IsPlayer)
+            {
+                Debug.Log("CurrentPlayer.IsPlayer" + CurrentPlayer.IsPlayer.ToString());
+                YourTurnView.SetActive(true);
+                EnemyTurnView.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("CurrentPlayer.IsPlayer" + CurrentPlayer.IsPlayer.ToString());
+                YourTurnView.SetActive(false);
+                EnemyTurnView.SetActive(true);
+            }
         }
         private void SwitchTurnManaSetup()
         {

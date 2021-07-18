@@ -16,9 +16,6 @@ namespace Players
 
         private int _hp;
 
-        //мана игрока в начале каждого раунда
-        public int ManaOnStartOfTurn;
-
         private GameObject _healthBar;
         public HealthBar HpBar;
 
@@ -32,6 +29,10 @@ namespace Players
             ManaSystem = GetComponentInChildren<ManaSystem>();
             CreateHpBar();
             CreateManaView();
+        }
+        private void Start()
+        {
+            ManaSystem.AddMana(1);
         }
 
         private void CreateHpBar()
