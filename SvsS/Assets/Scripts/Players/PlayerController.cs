@@ -18,7 +18,7 @@ namespace Players
         private void Start()
         {
             FirstPlayerSetup();
-            //охуенно я придумал да
+            //РѕС…СѓРµРЅРЅРѕ СЏ РїСЂРёРґСѓРјР°Р» РґР°
             for (int i = 0; i < Players.Count; i++)
             {
                 for (int j = 0; j < AmountOfCardsOnStart; j++)
@@ -26,8 +26,6 @@ namespace Players
                     Players[i].Deck.DrawCard();
                 }
             }
-            Debug.Log("Current Player is: " + CurrentPlayer.name +
-                ", its activity is" + CurrentPlayer.IsAbleToInteract.ToString());
         }
         private void FirstPlayerSetup()
         {
@@ -46,20 +44,15 @@ namespace Players
             CurrentPlayerActivity();            
             AmountOfTurns++;
         }
-        public void CurrentPlayerActivity()
+
+        private void CurrentPlayerActivity()
         {
-            Debug.Log("Current Player is: " + CurrentPlayer.name +
-                ", its activity is" + CurrentPlayer.IsAbleToInteract.ToString());
             SwitchTurnManaSetup();
             if (AmountOfTurns > 0)
             {
                 CurrentPlayer.Deck.DrawCard();
             }
             CurrentPlayer.IsAbleToInteract = true;
-            for (int i = 0; i < Players.Count; i++)
-            {
-                Debug.Log(Players[i].name + " " + Players[i].IsAbleToInteract.ToString());
-            }
         }
         private void SwitchTurnManaSetup()
         {

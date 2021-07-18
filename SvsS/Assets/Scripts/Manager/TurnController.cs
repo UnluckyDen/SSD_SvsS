@@ -15,7 +15,11 @@ namespace Manager
         private static readonly int EnemyToPlayer = Animator.StringToHash("EnemyToPlayer");
         private static readonly int PlayerToEnd = Animator.StringToHash("PlayerToEnd");
         private static readonly int EnemyToEnd = Animator.StringToHash("EnemyToEnd");
-        
+
+        public delegate void TurnChanged(bool isPlayer1Turn);
+
+        public event TurnChanged OnTurnChanged;
+
         public void Start()
         {
             _playerController = FindObjectOfType<PlayerController>();
@@ -32,10 +36,12 @@ namespace Manager
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
                 turnManager.SetTrigger(EnemyToEnd);
+                OnTurnChanged?.Invoke(true);
                 //Debug.Log("EnemyToEnd is Activated");
             }
             else if(turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
+                OnTurnChanged?.Invoke(true);
                 turnManager.SetTrigger(PlayerToEnd);
                 //Debug.Log("PlayerToEnd is Activated");
             }
@@ -44,16 +50,18 @@ namespace Manager
         {
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
-                EndTurnCode(PlayerToEnemy);             
+                EndTurnCode(PlayerToEnemy);
+                OnTurnChanged?.Invoke(false);
             }
             else if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
                 EndTurnCode(EnemyToPlayer);
+                OnTurnChanged?.Invoke(true);
             }
         }
-        private void EndTurnCode(int triggername)
+        private void EndTurnCode(int triggerName)
         {
-            turnManager.SetTrigger(triggername);
+            turnManager.SetTrigger(triggerName);
             _playerController.CurrentPlayer.IsAbleToInteract = false;
             _playerController.SwitchActivePlayer();
         }

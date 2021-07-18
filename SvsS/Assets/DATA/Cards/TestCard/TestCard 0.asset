@@ -21,18 +21,13 @@ MonoBehaviour:
   addDamages:
   - _value: 90
     target: 0
-  addHeals:
-  - _value: 50
-    target: 0
+  addHeals: []
   changeMana: []
-  drawCards:
-  - _value: 0
-    target: 0
-  dropCards:
-  - _value: 1
-    target: 0
+  drawCards: []
+  dropCards: []
   getCards: []
   testsMechanics:
   - _value: "\u0421\u043E\u0431\u0430\u043A\u0430 \u0441 \u043F\u0438\u0441\u0442\u043E\u043B\u0435\u0442\u043E\u043C
-      \u0437\u0430 1 \u043C\u0430\u043D\u0443 \u0441\u0442\u0440\u0435\u043B\u044F\u0435\u0442"
+      \u0437\u0430 1 \u043C\u0430\u043D\u0443 \u0441\u0442\u0440\u0435\u043B\u044F\u0435\u0442
+      \u0443\u0431\u043C\u0432\u0430\u0435\u0442 \u0438\u0433\u0440\u043E\u043A\u0430"
     target: 0
