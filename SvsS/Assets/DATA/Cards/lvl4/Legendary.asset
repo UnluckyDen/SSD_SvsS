@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2919a6ef07b74a478574269e24a0a12, type: 3}
+  m_Name: Legendary
+  m_EditorClassIdentifier: 
+  name: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F \u0441\u043E\u0431\u0430\u043A\u0430"
+  description: 
+  manaCost: 0
+  sprite: {fileID: 21300000, guid: 50d8aec6b2e4fd2408cbd56edb76262c, type: 3}
+  cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
+  addDamages: []
+  addHeals: []
+  changeMana: []
+  drawCards: []
+  dropCards: []
+  getCards: []
+  testsMechanics: []
