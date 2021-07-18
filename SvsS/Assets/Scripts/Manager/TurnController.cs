@@ -35,12 +35,10 @@ namespace Manager
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
                 turnManager.SetTrigger(EnemyToEnd);
-                //Debug.Log("EnemyToEnd is Activated");
             }
             else if(turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
                 turnManager.SetTrigger(PlayerToEnd);
-                //Debug.Log("PlayerToEnd is Activated");
             }
         }
         public void EndTurn()
