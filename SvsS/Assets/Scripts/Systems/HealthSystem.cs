@@ -8,7 +8,7 @@ namespace Systems
     {
         public delegate void HealChanged(float hpPercent);
         public event HealChanged OnHealthChanged;
-        public delegate void DeathCallback();
+        public delegate void DeathCallback(Player player);
         public event DeathCallback OnDied;
 
         private Player _player;
@@ -43,7 +43,7 @@ namespace Systems
             }
             if (Hp == 0)
             {
-                OnDied?.Invoke();
+                OnDied?.Invoke(_player);
             }
             OnHealthChanged?.Invoke(GetHpPercent());
         }
