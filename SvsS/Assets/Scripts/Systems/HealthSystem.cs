@@ -4,51 +4,55 @@ using UnityEngine;
 
 namespace Systems
 {
-    public class HealthSystem
+    public class HealthSystem : MonoBehaviour
     {
-        public event EventHandler OnHealthChanged;
+        public delegate void HealChanged(float hpPercent);
+        public event HealChanged OnHealthChanged;
+        public delegate void DeathCallback();
+        public event DeathCallback OnDied;
 
-        public delegate void DeathCallback(Player player);
-        public DeathCallback OnDied;
+        private Player _player;
 
-        private int _hp;
-        private readonly int _hpMax;
+        private int Hp { get; set; }
 
-        public HealthSystem(int maxHp)
+        private int _hpMax;
+        
+        private void Awake()
         {
-            _hpMax = maxHp;
-            _hp = maxHp;
+            _player = GetComponentInParent<Player>();
+            _hpMax = _player.PlayerSettings.hp;
+            Hp = _hpMax;
         }
 
         public int GetHp()
         {
-            return _hp;
+            return Hp;
         }
 
         public float GetHpPercent()
         {
-            return (float) _hp / _hpMax;
+            return (float) Hp / _hpMax;
         }
 
         public void ApplyDamage(int dmgAmount)
         {
-            _hp -= dmgAmount;
-            if (_hp < 0)
+            Hp -= dmgAmount;
+            if (Hp < 0)
             {
-                _hp = 0;               
+                Hp = 0;               
             }
-            if (_hp == 0)
+            if (Hp == 0)
             {
-                Debug.Log("OnDied is invoked");
+                OnDied?.Invoke();
             }
-            OnHealthChanged?.Invoke(this, EventArgs.Empty);
+            OnHealthChanged?.Invoke(GetHpPercent());
         }
 
         public void ApplyHeal(int healAmount)
         {
-            _hp += healAmount;
-            if (_hp > _hpMax) _hp = _hpMax;
-            OnHealthChanged?.Invoke(this, EventArgs.Empty);
+            Hp += healAmount;
+            if (Hp > _hpMax) Hp = _hpMax;
+            OnHealthChanged?.Invoke(GetHpPercent());
         }
     }
 }

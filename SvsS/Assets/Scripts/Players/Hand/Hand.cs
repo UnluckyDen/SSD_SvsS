@@ -11,14 +11,9 @@ namespace Players.Hand
     public class Hand : MonoBehaviour
     {
         public GameObject CardHolderPrefab;
-
         private List<GameObject> _cardHolders = new List<GameObject>();
-        private Camera _camera;
 
-        private void Start()
-        {
-            _camera = Camera.main;
-        }
+        public List<GameObject> CardHolders => _cardHolders;
 
         void Update()
         {
@@ -27,6 +22,7 @@ namespace Players.Hand
 
         public void AddCardToHand(CardInfo card)
         {
+            if (card == null) return;
             var cardHolder = Instantiate(CardHolderPrefab, Vector3.zero, Quaternion.identity);
 
             cardHolder.transform.SetParent(gameObject.transform);

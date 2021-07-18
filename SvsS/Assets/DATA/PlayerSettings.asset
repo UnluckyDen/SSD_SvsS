@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   hp: 100
-  hpBar: {fileID: 7357807275219906477, guid: 57e651c74ae1bde428f2d4030a310c46, type: 3}
+  hpBar: {fileID: 7357807275219906477, guid: 26e1b080cf22a8b46a79e089a2ab1394, type: 3}
   StartMana: 1
   MaxMana: 10
   ManaView: {fileID: 7357807275219906477, guid: 75868ee3b352c08408bedd4f2a00c650, type: 3}
