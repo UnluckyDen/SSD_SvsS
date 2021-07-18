@@ -15,7 +15,11 @@ namespace Manager
         private static readonly int EnemyToPlayer = Animator.StringToHash("EnemyToPlayer");
         private static readonly int PlayerToEnd = Animator.StringToHash("PlayerToEnd");
         private static readonly int EnemyToEnd = Animator.StringToHash("EnemyToEnd");
-        
+
+        public delegate void TurnChanged();
+
+        public event TurnChanged OnTurnChanged;
+
         public void Start()
         {
             _playerController = FindObjectOfType<PlayerController>();
@@ -44,16 +48,17 @@ namespace Manager
         {
             if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("PlayerTurn"))
             {
-                EndTurnCode(PlayerToEnemy);             
+                EndTurnCode(PlayerToEnemy);
+                OnTurnChanged?.Invoke();
             }
             else if (turnManager.GetCurrentAnimatorStateInfo(0).IsName("EnemyTurn"))
             {
                 EndTurnCode(EnemyToPlayer);
             }
         }
-        private void EndTurnCode(int triggername)
+        private void EndTurnCode(int triggerName)
         {
-            turnManager.SetTrigger(triggername);
+            turnManager.SetTrigger(triggerName);
             _playerController.CurrentPlayer.IsAbleToInteract = false;
             _playerController.SwitchActivePlayer();
         }

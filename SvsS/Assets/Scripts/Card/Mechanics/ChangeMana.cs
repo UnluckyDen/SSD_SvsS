@@ -12,6 +12,7 @@ namespace Card.Mechanics
         private int _value;
         [SerializeField] private int _addMana;
         [SerializeField] private int _subtractMana;
+        
         public void DoMechanic(int value, Player player)
         {
             player.ManaSystem.AddMana(_addMana);
@@ -20,7 +21,7 @@ namespace Card.Mechanics
 
         public int GetValue()
         {
-            return _value;
+            return _value = _addMana - _subtractMana;
         }
 
         public enum WhoIsTarget

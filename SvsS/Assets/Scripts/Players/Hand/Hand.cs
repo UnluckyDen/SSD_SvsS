@@ -11,14 +11,9 @@ namespace Players.Hand
     public class Hand : MonoBehaviour
     {
         public GameObject CardHolderPrefab;
-
         private List<GameObject> _cardHolders = new List<GameObject>();
-        private Camera _camera;
 
-        private void Start()
-        {
-            _camera = Camera.main;
-        }
+        public List<GameObject> CardHolders => _cardHolders;
 
         void Update()
         {
