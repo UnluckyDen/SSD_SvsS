@@ -3355,10 +3355,6 @@ MonoBehaviour:
   IsPlayer: 0
   IsAbleToInteract: 0
   PlayerSettings: {fileID: 11400000, guid: 31c13d1dce9f01146a8573cf569963a8, type: 2}
-<<<<<<< Updated upstream
-=======
-  ManaOnStartOfTurn: 0
->>>>>>> Stashed changes
   HpBar: {fileID: 0}
   ManaToGive: 0
   Hand: {fileID: 643252726}
@@ -3481,10 +3477,7 @@ MonoBehaviour:
   _healIndex: 1
   _drawCardIndex: 50
   _dropIndex: -50
-<<<<<<< Updated upstream
   timeBetweenPlays: 2
-=======
->>>>>>> Stashed changes
 --- !u!1001 &1690254055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4108,11 +4101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnManager: {fileID: 2022730188}
   _playerController: {fileID: 6408269309196020301}
-<<<<<<< Updated upstream
   _winPanel: {fileID: 1475570397}
   _losePanel: {fileID: 1719663518}
-=======
->>>>>>> Stashed changes
 --- !u!1001 &2024188676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4341,10 +4331,6 @@ MonoBehaviour:
   IsPlayer: 1
   IsAbleToInteract: 0
   PlayerSettings: {fileID: 11400000, guid: 31c13d1dce9f01146a8573cf569963a8, type: 2}
-<<<<<<< Updated upstream
-=======
-  ManaOnStartOfTurn: 0
->>>>>>> Stashed changes
   HpBar: {fileID: 0}
   ManaToGive: 0
   Hand: {fileID: 6408269309273003537}
@@ -6155,11 +6141,8 @@ MonoBehaviour:
   FirstPlayerID: 0
   AddedManaPerTurn: 1
   AmountOfCardsOnStart: 3
-<<<<<<< Updated upstream
   YourTurnView: {fileID: 909903107}
   EnemyTurnView: {fileID: 292020107}
-=======
->>>>>>> Stashed changes
 --- !u!114 &6408269309273003537
 MonoBehaviour:
   m_ObjectHideFlags: 0
