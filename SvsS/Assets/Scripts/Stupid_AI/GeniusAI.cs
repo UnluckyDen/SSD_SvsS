@@ -7,6 +7,7 @@ using Card;
 using Manager;
 using Players;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Stupid_AI
 {
@@ -18,32 +19,34 @@ namespace Stupid_AI
         private GameObject _mostValueCard;
         private PlayerController _playerController;
         private TurnController _turnController;
+        private Animator _statesOfAi;
 
         private float _cardValue;
+
+        private static readonly int CanPlay = Animator.StringToHash("CanPlayCard");
 
         [SerializeField] private int _manaIndex;
         [SerializeField] private int _damageIndex;
         [SerializeField] private int _healIndex;
         [SerializeField] private int _drawCardIndex;
         [SerializeField] private int _dropIndex;
-
-        [SerializeField] private float timeBetweenPlays = 2;
-
+        
         private void Start()
         {
+            _statesOfAi = GetComponent<Animator>();
             _turnController = FindObjectOfType<TurnController>();
-            _turnController.OnTurnChanged += PlayCard;
+            _turnController.OnTurnChanged += AITurnChecker;
             _aIPlayer = GetComponent<Player>();
             _cardList = _aIPlayer.Hand.CardHolders;
             _playableZone = FindObjectOfType<PlayableZone>();
             _playerController = FindObjectOfType<PlayerController>();
         }
 
-        private void PlayCard()
+
+        public void AITurnChecker(bool isPlayerTurn)
         {
-            Debug.Log("startPlayCard");
-            _coroutine = WaitAndPlayCard(timeBetweenPlays, MostValueCard());
-            StartCoroutine(_coroutine);
+            Debug.Log("startAITurn");
+            _statesOfAi.SetBool("IsAiTurn", !isPlayerTurn);
         }
 
         private GameObject MostValueCard()
@@ -106,50 +109,34 @@ namespace Stupid_AI
             return _mostValueCard;
         }
 
-        private bool CanPlayMoreCard()
+        public bool CanPlayCard()
         {
-            return _cardList.Select(card => card.GetComponentInChildren<CardInfo>().Data)
-                .Any(cardData => _aIPlayer.ManaSystem.CurrentMana >= cardData.manaCost);
+            if (!_cardList.Select(card => card.GetComponentInChildren<CardInfo>().Data)
+                .Any(cardData => _aIPlayer.ManaSystem.CurrentMana >= cardData.manaCost)) return false;
+            _statesOfAi.SetTrigger(CanPlay);
+            return true;
         }
 
-        private IEnumerator _coroutine;
-
-        private IEnumerator WaitAndPlayCard(float time, GameObject card)
+        public void PlayCard()
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(time);
-                if (card == null) yield break;
-                card.transform.SetParent(_playableZone.transform);
-                _cardList.Remove(card);
-                card.transform.localScale = _playableZone.transform.localScale;
-                card.transform.position = _playableZone.transform.position;
-                card.transform.localEulerAngles = new Vector3(-0, 0, 0f);
-                Debug.Log(CanPlayMoreCard());
-                if (CanPlayMoreCard())
-                {
-                    PlayCard();
-                }
-                else
-                {
-                    _coroutine = EndTurnCoroutine();
-                    StartCoroutine(_coroutine);
-                }
-            }
+            var card = _mostValueCard;
+            if (card == null) return;
+            card.transform.SetParent(_playableZone.transform);
+            _cardList.Remove(card);
+            card.transform.localScale = _playableZone.transform.localScale;
+            card.transform.position = _playableZone.transform.position;
+            card.transform.localEulerAngles = new Vector3(-0, 0, 0f);
         }
 
-        private IEnumerator EndTurnCoroutine()
+        private void EndTurn()
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(timeBetweenPlays);
-               _turnController.EndTurn();
-            }
+            _turnController.EndTurn();
         }
+   
 
         private void OnDestroy()
         {
-            _turnController.OnTurnChanged -= PlayCard;
+            _turnController.OnTurnChanged -= AITurnChecker;
         }
     }
 }
