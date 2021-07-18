@@ -20,7 +20,9 @@ MonoBehaviour:
   addDamages: []
   addHeals: []
   changeMana: []
-  drawCards: []
+  drawCards:
+  - _value: 2
+    target: 0
   dropCards: []
   getCards: []
   testsMechanics: []
