@@ -16,10 +16,6 @@ namespace Card.Mechanics
             player.HealthSystem.ApplyDamage(value);
         }
 
-        public int GetValue()
-        {
-            return _value;
-        }
 
         public enum WhoIsTarget
         {
@@ -28,6 +24,11 @@ namespace Card.Mechanics
         };
 
         public WhoIsTarget target = WhoIsTarget.CurrentPlayer;
+
+        public int GetValue()
+        {
+            return _value;
+        }
 
         public int GetTarget()
         {
