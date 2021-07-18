@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Systems;
 using Card;
 using Manager;
@@ -41,18 +42,14 @@ namespace Stupid_AI
         private void PlayCard()
         {
             Debug.Log("startPlayCard");
-            foreach (var card in _cardList)
-            {
-                _coroutine = WaitAndPlayCard(timeBetweenPlays, MostValueCard());
-                StartCoroutine(_coroutine);
-            }
-            _turnController.EndTurn();
+            _coroutine = WaitAndPlayCard(timeBetweenPlays, MostValueCard());
+            StartCoroutine(_coroutine);
         }
 
         private GameObject MostValueCard()
         {
             _mostValueCard = null;
-            _cardValue = -100000;
+            _cardValue = float.NegativeInfinity;
             foreach (var card in _cardList)
             {
                 var currentValue = 0f;
@@ -109,6 +106,12 @@ namespace Stupid_AI
             return _mostValueCard;
         }
 
+        private bool CanPlayMoreCard()
+        {
+            return _cardList.Select(card => card.GetComponentInChildren<CardInfo>().Data)
+                .Any(cardData => _aIPlayer.ManaSystem.CurrentMana >= cardData.manaCost);
+        }
+
         private IEnumerator _coroutine;
 
         private IEnumerator WaitAndPlayCard(float time, GameObject card)
@@ -122,6 +125,25 @@ namespace Stupid_AI
                 card.transform.localScale = _playableZone.transform.localScale;
                 card.transform.position = _playableZone.transform.position;
                 card.transform.localEulerAngles = new Vector3(-0, 0, 0f);
+                Debug.Log(CanPlayMoreCard());
+                if (CanPlayMoreCard())
+                {
+                    PlayCard();
+                }
+                else
+                {
+                    _coroutine = EndTurnCoroutine();
+                    StartCoroutine(_coroutine);
+                }
+            }
+        }
+
+        private IEnumerator EndTurnCoroutine()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(timeBetweenPlays);
+               _turnController.EndTurn();
             }
         }
 
