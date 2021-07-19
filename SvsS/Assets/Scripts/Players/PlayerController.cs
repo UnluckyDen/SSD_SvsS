@@ -23,17 +23,18 @@ namespace Players
         {
             FirstPlayerSetup();
             //охуенно я придумал да
-            for (int i = 0; i < Players.Count; i++)
+            foreach (var player in Players)
             {
-                for (int j = 0; j < AmountOfCardsOnStart; j++)
+                for (var j = 0; j < AmountOfCardsOnStart; j++)
                 {
-                    Players[i].Deck.DrawCard();
+                    player.Deck.DrawCard();
                 }
             }
         }
         private void FirstPlayerSetup()
         {
             Players[FirstPlayerID].ManaToGive++;
+            Players[FirstPlayerID].ManaSystem.AddMana(0);
             Players[FirstPlayerID].IsAbleToInteract = true;
             if(Players[FirstPlayerID].IsPlayer)
             {
