@@ -8,10 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: d32dab6b926e8f94097faa96ced8744e
-  - enabled: 0
-    path: Assets/Scenes/DensTestScene.unity
-    guid: 3e5fce8ca708df84c9d03a7ab272caf5
   - enabled: 1
-    path: Assets/Scenes/Levels/Level1.unity
-    guid: 6bb441d9a212bab48a5837f258415e2c
+    path: Assets/Scenes/Levels/Lecture.unity
+    guid: 85dfdfa27e9cf744bacb455654be1be4
+  - enabled: 1
+    path: Assets/Scenes/Levels/Remote.unity
+    guid: 2626588ad57495b4fb067dff3b16dac4
+  - enabled: 1
+    path: Assets/Scenes/Levels/Preparation.unity
+    guid: 2b1c7427aa9dbe644be56cc7a48ef4c0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Sobaki.unity
+    guid: 524f28756a1d96c4c8b3396768b3bc1b
+  - enabled: 1
+    path: Assets/Scenes/Levels/Exam.unity
+    guid: f0de9e4f38b24d740af020a522f04248
   m_configObjects: {}

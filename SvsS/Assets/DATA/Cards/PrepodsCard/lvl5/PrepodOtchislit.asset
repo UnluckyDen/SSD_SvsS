@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2919a6ef07b74a478574269e24a0a12, type: 3}
-  m_Name: TestCard
+  m_Name: PrepodOtchislit
   m_EditorClassIdentifier: 
-  name: "\u0421\u043E\u0431\u0430\u043A\u0430 \u0441 \u043F\u0438\u0441\u0442\u043E\u043B\u0435\u0442\u043E\u043C
-    \u0437\u0430 0 \u043C\u0430\u043D\u044B"
-  description: "\u0417\u0430\u0431\u0440\u0430\u043B\u0430 \u043F\u0430\u0448\u0442\u0435\u0442"
-  manaCost: 0
-  sprite: {fileID: 21300000, guid: 372ab8aaab89a0f4f93198fdc7b45ca3, type: 3}
+  name: "\u0410\u0442\u0449\u0438\u0441\u043B\u0435\u043D!"
+  description: 
+  manaCost: 10
+  sprite: {fileID: 21300000, guid: c6b95098f3b0489488df52befaec00a5, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
   addDamages:
-  - _value: 10000
-    target: 0
+  - _value: 100
+    target: 1
   addHeals: []
   changeMana: []
   drawCards: []

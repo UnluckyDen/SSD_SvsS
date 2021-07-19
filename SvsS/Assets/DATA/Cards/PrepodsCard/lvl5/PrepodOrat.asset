@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2919a6ef07b74a478574269e24a0a12, type: 3}
-  m_Name: PrepodEasyQuest
+  m_Name: PrepodOrat
   m_EditorClassIdentifier: 
-  name: "\"\u041B\u0451\u0433\u043A\u0438\u0439\" \u0432\u043E\u043F\u0440\u043E\u0441"
+  name: "\u041F\u043E\u0432\u044B\u0441\u0438\u0442\u044C \u0433\u043E\u043B\u043E\u0441"
   description: 
-  manaCost: 1
-  sprite: {fileID: 21300000, guid: 7499c6d297da4dc4c9f234b991f56de5, type: 3}
+  manaCost: 2
+  sprite: {fileID: 21300000, guid: af1befb742b529048996529365240cdd, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
   addDamages:
-  - _value: 5
-    target: 0
+  - _value: 10
+    target: 1
   addHeals: []
-  changeMana: []
+  changeMana:
+  - _addMana: 4
+    _subtractMana: 0
+    target: 0
   drawCards: []
   dropCards: []
   getCards: []

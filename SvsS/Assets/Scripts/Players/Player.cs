@@ -30,10 +30,6 @@ namespace Players
             CreateHpBar();
             CreateManaView();
         }
-        private void Start()
-        {
-            ManaSystem.AddMana(1);
-        }
 
         private void CreateHpBar()
         {
