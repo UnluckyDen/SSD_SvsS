@@ -1,8 +1,5 @@
-using System;
-using Card;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.iOS;
 
 namespace Systems.MoveCard
 {
