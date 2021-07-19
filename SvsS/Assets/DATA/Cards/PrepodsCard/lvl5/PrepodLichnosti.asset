@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: PrepodLichnosti
   m_EditorClassIdentifier: 
   name: "\u041F\u0435\u0440\u0435\u0439\u0442\u0438 \u043D\u0430 \u043B\u0438\u0447\u043D\u043E\u0441\u0442\u0438"
-  description: 
+  description: "\u041F\u041E \u0412\u0421\u0415\u041C \u041F\u0420\u0418\u0417\u041D\u0410\u041A\u0410\u041C
+    \u0422\u042B PES, \u041A\u0420\u041E\u041C\u0415 \u0412\u0415\u0420\u041D\u041E\u0421\u0422\u0418.
+    15 \u0443\u0440\u043E\u043D\u0430 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u0443,
+    \u0442\u044F\u043D\u0435\u0442 1 \u043A\u0430\u0440\u0442\u0443"
   manaCost: 4
   sprite: {fileID: 21300000, guid: e339bdac5e32b114f90e4fe5fbaba284, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
