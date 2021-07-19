@@ -20,6 +20,7 @@ namespace Stupid_AI
         private PlayerController _playerController;
         private TurnController _turnController;
         private Animator _statesOfAi;
+        private PigPlaySound _pigPlaySound;
 
         private float _cardValue;
 
@@ -33,6 +34,7 @@ namespace Stupid_AI
         
         private void Start()
         {
+            _pigPlaySound = FindObjectOfType<PigPlaySound>();
             _statesOfAi = GetComponent<Animator>();
             _turnController = FindObjectOfType<TurnController>();
             _turnController.OnTurnChanged += AITurnChecker;
@@ -131,6 +133,7 @@ namespace Stupid_AI
         private void EndTurn()
         {
             _turnController.EndTurn();
+            _pigPlaySound.PlaySound();
         }
    
 

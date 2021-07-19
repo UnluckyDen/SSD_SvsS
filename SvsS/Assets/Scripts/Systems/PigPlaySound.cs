@@ -15,6 +15,11 @@ namespace Systems
 
         private void OnMouseDown()
         {
+            PlaySound();
+        }
+
+        public void PlaySound()
+        {
             _audioSource.Play();
         }
     }
