@@ -19,6 +19,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3672477815115145685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623161491356870743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26af20d60224c4f4ba5a121e2d73fbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5570123576990134438
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +148,7 @@ MonoBehaviour:
   IsPlayer: 0
   IsAbleToInteract: 0
   PlayerSettings: {fileID: 11400000, guid: 31c13d1dce9f01146a8573cf569963a8, type: 2}
+  ChelAnimator: {fileID: 0}
   HpBar: {fileID: 0}
   ManaToGive: 0
   Hand: {fileID: 0}

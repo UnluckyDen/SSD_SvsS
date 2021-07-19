@@ -10,6 +10,8 @@ namespace Players
         public bool IsPlayer;
         public bool IsAbleToInteract = false;
         public PlayerSettingsData PlayerSettings;
+
+        public AnimatorController ChelAnimator;
         
         [NonSerialized] public HealthSystem HealthSystem;
         [NonSerialized] public ManaSystem ManaSystem;
@@ -25,6 +27,7 @@ namespace Players
 
         private void Awake()
         {
+            ChelAnimator = GetComponentInChildren<AnimatorController>();
             HealthSystem = GetComponent<HealthSystem>();
             ManaSystem = GetComponentInChildren<ManaSystem>();
             CreateHpBar();

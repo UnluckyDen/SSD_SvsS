@@ -41,6 +41,7 @@ namespace Systems
                 CardIsPlayed?.Invoke(_card.Data);
                 
                 _card.transform.SetParent(_canvas.transform);
+                _playerController.CurrentPlayer.ChelAnimator.SetAnimationPlayCard();
 
                 _coroutine = WaitAndDestroy(_timeToShow,_card.gameObject);
                 StartCoroutine(_coroutine);
