@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0421\u043C\u0435\u0448\u043D\u0430\u044F \u0436\u0451\u043B\u0442\u0430\u044F
     \u0441\u043E\u0431\u0430\u043A\u0430"
-  description: 
+  description: "\u041F\u043E\u0434\u043D\u0438\u043C\u0430\u0435\u0442 \u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043D\u0438\u0435
+    \u043D\u0430 10 \u043C\u0430\u043D\u044B"
   manaCost: 5
   sprite: {fileID: 21300000, guid: 6e1e9fc17ceb48546b8ecf7554023032, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
