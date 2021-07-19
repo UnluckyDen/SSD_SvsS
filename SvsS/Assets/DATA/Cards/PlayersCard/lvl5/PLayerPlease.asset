@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: PLayerPlease
   m_EditorClassIdentifier: 
   name: "\u041A\u043B\u044F\u043D\u0447\u0438\u0442\u044C \u0442\u0440\u043E\u0435\u0447\u043A\u0443"
-  description: 
+  description: "\u041F\u043E\u0441\u0442\u0430\u0432\u0442\u0435 \u043F\u0438\u0441\u044F\u0442
+    \u0448\u0435\u0441\u0442\u044C \u043F\u0430\u0436\u0430\u043B\u0443\u0441\u0442\u0430.
+    -10 \u0445\u043F, 20 \u0443\u0440\u043E\u043D\u0430."
   manaCost: 6
   sprite: {fileID: 21300000, guid: 7c7fa2dedb4011e45873652ae2393093, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
   addDamages:
   - _value: 10
     target: 0
-  - _value: 25
+  - _value: 20
     target: 1
   addHeals: []
   changeMana: []
