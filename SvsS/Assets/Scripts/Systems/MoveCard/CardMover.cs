@@ -31,6 +31,7 @@ namespace Systems.MoveCard
 
         void ResetCardPosition(GameObject card)
         {
+            if (card.GetComponent<CardInfo>()==null) return;
             _ownerOfMoves.Hand.AddCardToHand(card.GetComponent<CardInfo>());
             card.transform.localPosition = Vector3.zero;
         }

@@ -10,23 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2919a6ef07b74a478574269e24a0a12, type: 3}
-  m_Name: Lekciya_page
+  m_Name: EndOfLection
   m_EditorClassIdentifier: 
-  name: "\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043A\u043E\u043D\u0441\u043F\u0435\u043A\u0442\u0430"
-  description: 
-  manaCost: 2
-  sprite: {fileID: 21300000, guid: 16926c7a264d39f48a7b51482b563a8b, type: 3}
+  name: "\u041A\u043E\u043D\u0435\u0446 \u043B\u0435\u043A\u0446\u0438\u0438"
+  description: "\u0410\u043D\u0438\u0433\u0438\u043B\u0438\u0440\u0443\u0435\u0442
+    \u0441\u0430\u043C\u043E\u0433\u043E \u0441\u0435\u0431\u044F"
+  manaCost: 10
+  sprite: {fileID: 21300000, guid: 9ade525d3fc4ea147beabf22db8c6542, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
   addDamages:
-  - _value: 0
-    target: 0
-  - _value: 0
-    target: 0
-  - _value: 0
-    target: 0
-  - _value: 0
-    target: 0
-  - _value: 0
+  - _value: 1000
     target: 0
   addHeals: []
   changeMana: []
