@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   name: "\u0421\u043E\u0431\u0430\u043A\u0430 \u0441 \u043F\u0438\u0441\u0442\u043E\u043B\u0435\u0442\u043E\u043C"
-  description: 
+  description: "\u0421\u043E\u0431\u0430\u043A\u0430 \u0441 \u043F\u0438\u0441\u0442\u0430\u043B\u0435\u0442\u043E\u043C
+    \u0441\u0442\u0440\u0435\u043B\u044F\u0435\u0442 \u043D\u0430 15 \u0443\u0440\u043E\u043D\u0430
+    \u0438 \u0442\u0430\u0449\u0438\u0442 \u043A\u0430\u0440\u0442\u0443 \u0438\u0437
+    \u043A\u043E\u043B\u043E\u0434\u044B"
   manaCost: 2
-  sprite: {fileID: 21300000, guid: 5cab43ca44c45d8429480b568b301d3b, type: 3}
+  sprite: {fileID: 21300000, guid: fc13c394ed01d7540841aa7216050861, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
   addDamages:
   - _value: 15
