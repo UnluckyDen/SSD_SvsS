@@ -34,14 +34,14 @@ namespace Players
         private void CreateHpBar()
         {
             var hpBar = Instantiate(PlayerSettings.hpBar, 
-                new Vector3(transform.position.x, 3f), Quaternion.identity);
+                new Vector3(transform.position.x, 2f), Quaternion.identity);
             hpBar.transform.SetParent(transform);
         }
 
         private void CreateManaView()
         {
             var manaView = Instantiate(PlayerSettings.ManaView,
-                new Vector3(gameObject.transform.position.x, 4f), Quaternion.identity);
+                new Vector3(gameObject.transform.position.x, 3f), Quaternion.identity);
             manaView.transform.SetParent(transform);
         }
     }
