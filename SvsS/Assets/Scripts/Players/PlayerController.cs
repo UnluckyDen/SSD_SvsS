@@ -18,6 +18,7 @@ namespace Players
 
         public GameObject YourTurnView;
         public GameObject EnemyTurnView;
+        public GameObject TurnButton;
         
         private void Start()
         {
@@ -67,12 +68,14 @@ namespace Players
                 Debug.Log("CurrentPlayer.IsPlayer" + CurrentPlayer.IsPlayer.ToString());
                 YourTurnView.SetActive(true);
                 EnemyTurnView.SetActive(false);
+                TurnButton.SetActive(true);
             }
             else
             {
                 Debug.Log("CurrentPlayer.IsPlayer" + CurrentPlayer.IsPlayer.ToString());
                 YourTurnView.SetActive(false);
                 EnemyTurnView.SetActive(true);
+                TurnButton.SetActive(false);
             }
         }
         private void SwitchTurnManaSetup()
