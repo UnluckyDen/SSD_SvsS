@@ -15,7 +15,7 @@ MonoBehaviour:
   name: "\u0421\u043B\u0438\u0442\u044B\u0435 \u0431\u0438\u043B\u0435\u0442\u044B"
   description: "\u041B\u0443\u0447\u0448\u0430\u044F \u0437\u0430\u0449\u0438\u0442\u0430
     - \u044D\u0442\u043E \u043D\u0430\u043F\u0430\u0434\u0435\u043D\u0438\u0435.
-    -15 \u0445\u043F, +2 \u043C\u0430\u043D\u044B"
+    -15 \u0445\u043F, +6 \u043C\u0430\u043D\u044B"
   manaCost: 4
   sprite: {fileID: 21300000, guid: 191087e1c486b3046b32911c58ed8586, type: 3}
   cardPrefab: {fileID: 2981629438531938765, guid: 4a85dedde67c6a34e9d875394c66866a, type: 3}
